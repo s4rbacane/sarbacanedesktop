@@ -52,7 +52,7 @@ $_MODULE['<{sarbacanedesktop}prestashop>sarbacanedesktop_e553f43e90bc7b652d11087
 $_MODULE['<{sarbacanedesktop}prestashop>sarbacanedesktop_dd1f775e443ff3b9a89270713580a51b'] = 'Previous';
 $_MODULE['<{sarbacanedesktop}prestashop>sarbacanedesktop_5293c124179e10cadb2a3f8462297e09'] = 'Download and install Mailify';
 $_MODULE['<{sarbacanedesktop}prestashop>sarbacanedesktop_30fa0cd0bdc06298169b6351c220cec5'] = 'Create your free account';
-$_MODULE['<{sarbacanedesktop}prestashop>sarbacanedesktop_e9e0b6d9b0066d3bbc799827de12fa15'] = 'Activate the Prestashop extension and fill in following fields in the Settings section:';
+$_MODULE['<{sarbacanedesktop}prestashop>sarbacanedesktop_1fcb1ab96ca96ad71180fa1c8ea3ab76'] = 'Rendez-vous dans la section \"extensions\" et activez l’extension Prestashop, puis renseignez les éléments suivants : (traduire)';
 $_MODULE['<{sarbacanedesktop}prestashop>sarbacanedesktop_02a3a357710cc2a5dfdfb74ed012fb59'] = 'Url';
 $_MODULE['<{sarbacanedesktop}prestashop>sarbacanedesktop_897356954c2cd3d41b221e3f24f99bba'] = 'Key';
 $_MODULE['<{sarbacanedesktop}prestashop>sarbacanedesktop_d427200bc5f868228c035ae476c211dd'] = 'Generate a new key';

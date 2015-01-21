@@ -27,13 +27,15 @@
 #sarbacanedesktop p, #sarbacanedesktop form p{margin:0 0 8.5px;padding:0;}
 #sarbacanedesktop a{color:#f06800;}
 #sarbacanedesktop .sd_header{padding-top:20px;padding-bottom:20px;}
-#sarbacanedesktop .sd_logo_fr, #sarbacanedesktop .sd_logo,#sarbacanedesktop .sd_picto1, #sarbacanedesktop .sd_picto2, #sarbacanedesktop .sd_picto3, #sarbacanedesktop .sd_picto4, #sarbacanedesktop .sd_info_container_left > div > div > p, #sarbacanedesktop .sd_info_line,#sarbacanedesktop .sd_step_line, #sarbacanedesktop .sd_step2_info{background-repeat:no-repeat;background-image:url('../img/sd.png');}
+#sarbacanedesktop .sd_logo_fr, #sarbacanedesktop .sd_logo,#sarbacanedesktop .sd_picto1, #sarbacanedesktop .sd_picto2, #sarbacanedesktop .sd_picto3, #sarbacanedesktop .sd_picto4, #sarbacanedesktop .sd_info_container_left > div > div > p, #sarbacanedesktop .sd_info_line,#sarbacanedesktop .sd_step_line, #sarbacanedesktop .sd_step2_info, #sarbacanedesktop .sd_info_container_right{background-repeat:no-repeat;background-image:url('../img/sd.png');}
 #sarbacanedesktop .sd_logo, #sarbacanedesktop .sd_logo_fr{margin:auto;}
 #sarbacanedesktop .sd_logo_fr{width:318px;height:45px;background-position:-150px -99px;}
 #sarbacanedesktop .sd_logo{width:192px;height:55px;background-position:-469px -98px;}
 #sarbacanedesktop .sd_separator{border-top:1px solid #ebedf2;padding-bottom:5px;margin-top:5px;}
 #sarbacanedesktop .sd_title{font-size:23px;text-align:center;}
-#sarbacanedesktop .sd_title_separator{border-top:2px solid #f06800;width:75px;margin:auto;margin-top:10px;padding-bottom:20px;}
+#sarbacanedesktop .sd_title_separator_page, #sarbacanedesktop .sd_title_separator_account_offer{border-top:2px solid #f06800;width:75px;margin:auto;}
+#sarbacanedesktop .sd_title_separator_account_offer{margin-top:15px;padding-bottom:20px;}
+#sarbacanedesktop .sd_title_separator_page{margin-top:25px;padding-bottom:35px;}
 #sarbacanedesktop .sd_picto1, #sarbacanedesktop .sd_picto2, #sarbacanedesktop .sd_picto3, #sarbacanedesktop .sd_picto4{width:72px;height:72px;margin-bottom:20px;}
 #sarbacanedesktop .sd_picto1{background-position: 0px 0px;}
 #sarbacanedesktop .sd_picto2{background-position: -73px 0px;}
@@ -41,7 +43,7 @@
 #sarbacanedesktop .sd_picto4{background-position: -73px -73px;}
 #sarbacanedesktop .sd_long_subtitle{font-size:16px;width:150px;}
 #sarbacanedesktop .sd_short_subtitle{font-size:16px;width:120px;}
-#sarbacanedesktop .sd_subtitle_separator{border-top:2px solid #f06800;width:75px;margin-top:20px;height:15px;}
+#sarbacanedesktop .sd_subtitle_separator{border-top:2px solid #f06800;width:75px;margin-top:15px;padding-bottom:20px;}
 #sarbacanedesktop .sd_video_config_container{overflow:hidden;padding-bottom:10px;}
 #sarbacanedesktop .sd_video_container{float:left;width:610px;}
 #sarbacanedesktop .sd_config_container{float:left;width:270px;}
@@ -62,7 +64,7 @@
 #sarbacanedesktop .sd_account_offer_container{padding-top:60px;}
 #sarbacanedesktop .sd_account{color:#5b8217;font-weight:bold;font-size:19px;text-align:center;}
 #sarbacanedesktop .sd_offer{text-transform:uppercase;font-weight:bold;text-align:center;color:#9c9898;font-size:14px;}
-#sarbacanedesktop #sd_step{height:130px;}
+#sarbacanedesktop #sd_step{height:100px;}
 #sarbacanedesktop .sd_step{background:#404040;padding-top:50px;display:none;}
 #sarbacanedesktop .sd_show_step{display:block;}
 #sarbacanedesktop .sd_step *{color:white;}
@@ -94,6 +96,7 @@
 #sarbacanedesktop .sd_step2_selection_shop_input{float:left;width:25px;}
 #sarbacanedesktop .sd_step2_selection_shop_text{float:left;width:475px;}
 #sarbacanedesktop .sd_step3_instruction{width:750px;margin:auto;}
+#sarbacanedesktop .sd_step3_instruction a{text-decoration:underline;}
 #sarbacanedesktop .sd_step3_instruction .sd_key_button_container{text-align:right;padding-top:30px;padding-bottom:50px;}
 #sarbacanedesktop .sd_step3_instruction p, #sarbacanedesktop .sd_step3_instruction a{font-size:16px;}
 #sarbacanedesktop .sd_key_container{padding-top:15px;}

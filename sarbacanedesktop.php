@@ -35,7 +35,7 @@ class Sarbacanedesktop extends Module
 		$this->name = 'sarbacanedesktop';
 		$this->tab = 'emailing';
 		$this->author = 'Sarbacane Software';
-		$this->need_instance = 0;
+		$this->need_instance = 1;
 		$this->bootstrap = true;
 		parent::__construct();
 		$this->displayName = $this->l('Contact lists - Sarbacane Desktop');

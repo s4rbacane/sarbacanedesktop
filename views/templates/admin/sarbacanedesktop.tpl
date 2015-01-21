@@ -29,7 +29,7 @@
 		<div class="{$logo_class|escape:'htmlall':'UTF-8'}"></div>
 	</div>
 	<p class="sd_title">{l s='It\'s easy to manage your newsletter and email campaigns' mod='sarbacanedesktop'}</p>
-	<div class="sd_title_separator"></div>
+	<div class="sd_title_separator_page"></div>
 	<div class="sd_video_config_container">
 		<div class="sd_video_container">
 			<iframe width="565" height="315" src="{l s='//www.youtube.com/embed/eLMy2tSSYgE' mod='sarbacanedesktop'}?rel=0&showinfo=0" frameborder="0" allowfullscreen></iframe>
@@ -98,7 +98,7 @@
 	<div class="sd_account_offer_container">
 		<p class="sd_account">{l s='Create your account for free and start sending emails' mod='sarbacanedesktop'}</p>
 		<p class="sd_offer">{l s='No strings attached' mod='sarbacanedesktop'}</p>
-		<div class="sd_title_separator"></div>
+		<div class="sd_title_separator_account_offer"></div>
 	</div>
 	<div class="sd_info_container">
 		<div class="sd_info_container_left">
@@ -246,9 +246,9 @@
 			{if $sd_is_user == 'no'}
 			<p>1/ <a href="{l s='https://www.sarbacane.com/ws/soft-redirect.asp?key=heXmrxBEUO&com=PrestaShopInfo' mod='sarbacanedesktop'}" target="_blank">{l s='Download and install Sarbacane' mod='sarbacanedesktop'}</a></p>
 			<p>2/ {l s='Create your free account' mod='sarbacanedesktop'}</p>
-			<p>3/ {l s='Activate the Prestashop extension and fill in following fields in the Settings section:' mod='sarbacanedesktop'}</p>
+			<p>3/ {l s='Rendez-vous dans la section "extensions" et activez l’extension Prestashop, puis renseignez les éléments suivants :' mod='sarbacanedesktop'}</p>
 			{else if $sd_is_user == 'yes'}
-			<p>{l s='Activate the Prestashop extension and fill in following fields in the Settings section:' mod='sarbacanedesktop'}</p>
+			<p>{l s='Rendez-vous dans la section "extensions" et activez l’extension Prestashop, puis renseignez les éléments suivants :' mod='sarbacanedesktop'}</p>
 			{/if}
 			<form autocomplete="off" action="{$sd_submit_url|escape:'htmlall':'UTF-8'}" method="post">
 				<div class="sd_key_container">
