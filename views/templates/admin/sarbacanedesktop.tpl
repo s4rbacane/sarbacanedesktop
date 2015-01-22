@@ -36,7 +36,7 @@
 		</div>
 		<div class="sd_config_container">
 			<p>{l s='This Prestashop module enables you to synchronize clients and accounts that have subscribed to your newsletter from your shop online using Sarbacane Desktop\'s email marketing software.' mod='sarbacanedesktop'}</p>
-			<p><input type="button" onclick="sdDisplayStep(1)" class="sd_config_button" value="{l s='Démarrer la configuration' mod='sarbacanedesktop'}"/></p>
+			<p><input type="button" onclick="sdDisplayStep(1)" class="sd_config_button" value="{l s='Begin the set-up' mod='sarbacanedesktop'}"/></p>
 		</div>
 	</div>
 	<div class="sd_separator"></div>
@@ -51,7 +51,7 @@
 			<div>
 				<div>
 					<div class="sd_picto2"></div>
-					<p class="sd_long_subtitle">{l s='Editeur graphique responsive' mod='sarbacanedesktop'}</p>
+					<p class="sd_long_subtitle">{l s='Responsive visual editor' mod='sarbacanedesktop'}</p>
 				</div>
 			</div>
 			<div>
@@ -115,7 +115,7 @@
 		</div>
 		<div class="sd_info_container_right">
 			<div>
-				<p class="sd_info_title">{l s='Besoin d\'aide ?' mod='sarbacanedesktop'}</p>
+				<p class="sd_info_title">{l s='Need help?' mod='sarbacanedesktop'}</p>
 				<div>
 					<p>{l s='Email:' mod='sarbacanedesktop'} {l s='support@sarbacane.com' mod='sarbacanedesktop'}</p>
 					<p>{l s='Tel:' mod='sarbacanedesktop'} {l s='+33(0) 328 328 040' mod='sarbacanedesktop'}</p>
@@ -246,9 +246,9 @@
 			{if $sd_is_user == 'no'}
 			<p>1/ <a href="{l s='https://www.sarbacane.com/ws/soft-redirect.asp?key=heXmrxBEUO&com=PrestaShopInfo' mod='sarbacanedesktop'}" target="_blank">{l s='Download and install Sarbacane' mod='sarbacanedesktop'}</a></p>
 			<p>2/ {l s='Create your free account' mod='sarbacanedesktop'}</p>
-			<p>3/ {l s='Rendez-vous dans la section "extensions" et activez l’extension Prestashop, puis renseignez les éléments suivants :' mod='sarbacanedesktop'}</p>
+			<p>3/ {l s='Enable the Prestashop extension in our extensions menu, and then fill in the following fields:' mod='sarbacanedesktop'}</p>
 			{else if $sd_is_user == 'yes'}
-			<p>{l s='Rendez-vous dans la section "extensions" et activez l’extension Prestashop, puis renseignez les éléments suivants :' mod='sarbacanedesktop'}</p>
+			<p>{l s='Enable the Prestashop extension in our extensions menu, and then fill in the following fields:' mod='sarbacanedesktop'}</p>
 			{/if}
 			<form autocomplete="off" action="{$sd_submit_url|escape:'htmlall':'UTF-8'}" method="post">
 				<div class="sd_key_container">

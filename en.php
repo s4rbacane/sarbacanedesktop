@@ -7,9 +7,9 @@ $_MODULE['<{sarbacanedesktop}prestashop>sarbacanedesktop_b9d73c15401ec22e0bc1499
 $_MODULE['<{sarbacanedesktop}prestashop>sarbacanedesktop_0e2aa06748e4809dbe978a9d38acb269'] = 'It\'s easy to manage your newsletter and email campaigns';
 $_MODULE['<{sarbacanedesktop}prestashop>sarbacanedesktop_fdeae26665fc4b3a0266f4146f6e6742'] = '//www.youtube.com/embed/gUGRbfXOJIk';
 $_MODULE['<{sarbacanedesktop}prestashop>sarbacanedesktop_a16a6a1971d5eda3675356f22c51dda7'] = 'This Prestashop module enables you to synchronize clients and accounts that have subscribed to your newsletter from your shop online using Mailify\'s email marketing software.';
-$_MODULE['<{sarbacanedesktop}prestashop>sarbacanedesktop_ead40f3b25186d7abcf83169b3202ca1'] = 'Démarrer la configuration (trad)';
+$_MODULE['<{sarbacanedesktop}prestashop>sarbacanedesktop_c707b470dd0a030e5091d208388c32ad'] = 'Begin the set-up';
 $_MODULE['<{sarbacanedesktop}prestashop>sarbacanedesktop_28e43fd25ca7b7c0032a4d75ed38be08'] = 'Synchronization of your shop data';
-$_MODULE['<{sarbacanedesktop}prestashop>sarbacanedesktop_f6b1861bcca99bf79b6bcc1ffe194d13'] = 'Editeur graphique responsive (trad)';
+$_MODULE['<{sarbacanedesktop}prestashop>sarbacanedesktop_3d6a9428c091d22a7f05c1d18b0d6def'] = 'Responsive visual editor';
 $_MODULE['<{sarbacanedesktop}prestashop>sarbacanedesktop_9e971ad51fc8f2b7c76e66c3763a297d'] = 'Detailed statistics';
 $_MODULE['<{sarbacanedesktop}prestashop>sarbacanedesktop_4a70fb18ce269856a738cc498183646a'] = 'Optimal deliverability';
 $_MODULE['<{sarbacanedesktop}prestashop>sarbacanedesktop_e92b67bf568e3ede33b31be21f758f00'] = 'Synchronize and manage all the email lists from your Prestashop store';
@@ -23,7 +23,7 @@ $_MODULE['<{sarbacanedesktop}prestashop>sarbacanedesktop_92cc4e273a001cbbd5ab73f
 $_MODULE['<{sarbacanedesktop}prestashop>sarbacanedesktop_85d5ed16546482f0321301c9d3e53925'] = 'Awarded Best Emailing Solution by Bsoco Awards (an index that compares emailing solutions)';
 $_MODULE['<{sarbacanedesktop}prestashop>sarbacanedesktop_cdf5b25142f3c915147a797e74f8f51c'] = 'All you need to succeed: design, customize, send, and follow-up on your campaigns';
 $_MODULE['<{sarbacanedesktop}prestashop>sarbacanedesktop_6ebc56e8996c4317b343b6d4af2b69b9'] = 'A tech heldpdesk and a variety of resources to help: videos, tutorials, manuals, tips...';
-$_MODULE['<{sarbacanedesktop}prestashop>sarbacanedesktop_618e3390f38dacdd7b9f0028005bc98a'] = 'Besoin d\'aide ? (trad)';
+$_MODULE['<{sarbacanedesktop}prestashop>sarbacanedesktop_4bd9ef088a14b5f6fd9ef86e6f33037f'] = 'Need help?';
 $_MODULE['<{sarbacanedesktop}prestashop>sarbacanedesktop_6a1e265f92087bb6dd18194833fe946b'] = 'Email:';
 $_MODULE['<{sarbacanedesktop}prestashop>sarbacanedesktop_a4157e38b152bc01311a845b53793107'] = 'help@mailify.com';
 $_MODULE['<{sarbacanedesktop}prestashop>sarbacanedesktop_d0398e90769ea6ed2823a3857bcc19ea'] = 'Tel:';
@@ -52,7 +52,7 @@ $_MODULE['<{sarbacanedesktop}prestashop>sarbacanedesktop_e553f43e90bc7b652d11087
 $_MODULE['<{sarbacanedesktop}prestashop>sarbacanedesktop_dd1f775e443ff3b9a89270713580a51b'] = 'Previous';
 $_MODULE['<{sarbacanedesktop}prestashop>sarbacanedesktop_5293c124179e10cadb2a3f8462297e09'] = 'Download and install Mailify';
 $_MODULE['<{sarbacanedesktop}prestashop>sarbacanedesktop_30fa0cd0bdc06298169b6351c220cec5'] = 'Create your free account';
-$_MODULE['<{sarbacanedesktop}prestashop>sarbacanedesktop_1fcb1ab96ca96ad71180fa1c8ea3ab76'] = 'Rendez-vous dans la section \"extensions\" et activez l’extension Prestashop, puis renseignez les éléments suivants : (traduire)';
+$_MODULE['<{sarbacanedesktop}prestashop>sarbacanedesktop_8b81d9b67a3da0d912af8a260a3211d3'] = 'Enable the Prestashop extension in our extensions menu, and then fill in the following fields:';
 $_MODULE['<{sarbacanedesktop}prestashop>sarbacanedesktop_02a3a357710cc2a5dfdfb74ed012fb59'] = 'Url';
 $_MODULE['<{sarbacanedesktop}prestashop>sarbacanedesktop_897356954c2cd3d41b221e3f24f99bba'] = 'Key';
 $_MODULE['<{sarbacanedesktop}prestashop>sarbacanedesktop_d427200bc5f868228c035ae476c211dd'] = 'Generate a new key';

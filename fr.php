@@ -7,9 +7,9 @@ $_MODULE['<{sarbacanedesktop}prestashop>sarbacanedesktop_b9d73c15401ec22e0bc1499
 $_MODULE['<{sarbacanedesktop}prestashop>sarbacanedesktop_0e2aa06748e4809dbe978a9d38acb269'] = 'Gérer vos newsletters et emailing en toute simplicité';
 $_MODULE['<{sarbacanedesktop}prestashop>sarbacanedesktop_fdeae26665fc4b3a0266f4146f6e6742'] = '//www.youtube.com/embed/eLMy2tSSYgE';
 $_MODULE['<{sarbacanedesktop}prestashop>sarbacanedesktop_a16a6a1971d5eda3675356f22c51dda7'] = 'Ce module Prestashop vous permet de synchroniser les clients, comptes, inscrits à la newsletter de votre boutique avec le logiciel emailing Sarbacane Desktop, et de profiter de ces innombrables fonctionnalités...';
-$_MODULE['<{sarbacanedesktop}prestashop>sarbacanedesktop_ead40f3b25186d7abcf83169b3202ca1'] = 'Démarrer la configuration';
+$_MODULE['<{sarbacanedesktop}prestashop>sarbacanedesktop_c707b470dd0a030e5091d208388c32ad'] = 'Démarrer la configuration';
 $_MODULE['<{sarbacanedesktop}prestashop>sarbacanedesktop_28e43fd25ca7b7c0032a4d75ed38be08'] = 'Données boutique synchronisées';
-$_MODULE['<{sarbacanedesktop}prestashop>sarbacanedesktop_f6b1861bcca99bf79b6bcc1ffe194d13'] = 'Editeur graphique responsive';
+$_MODULE['<{sarbacanedesktop}prestashop>sarbacanedesktop_3d6a9428c091d22a7f05c1d18b0d6def'] = 'Editeur graphique responsive';
 $_MODULE['<{sarbacanedesktop}prestashop>sarbacanedesktop_9e971ad51fc8f2b7c76e66c3763a297d'] = 'Statistiques détaillées';
 $_MODULE['<{sarbacanedesktop}prestashop>sarbacanedesktop_4a70fb18ce269856a738cc498183646a'] = 'Délivrabilité optimale';
 $_MODULE['<{sarbacanedesktop}prestashop>sarbacanedesktop_e92b67bf568e3ede33b31be21f758f00'] = 'Synchroniser et gérer toutes les listes d\'emails de votre boutique Prestashop';
@@ -23,7 +23,7 @@ $_MODULE['<{sarbacanedesktop}prestashop>sarbacanedesktop_92cc4e273a001cbbd5ab73f
 $_MODULE['<{sarbacanedesktop}prestashop>sarbacanedesktop_85d5ed16546482f0321301c9d3e53925'] = 'Elue Meilleure Solution Emailing par Bsoco Awards (comparatif de solutions emailing)';
 $_MODULE['<{sarbacanedesktop}prestashop>sarbacanedesktop_cdf5b25142f3c915147a797e74f8f51c'] = 'Tout ce dont vous avez besoin pour réussir : conception, personnalisation, envoi et suivi des retours de vos campagnes';
 $_MODULE['<{sarbacanedesktop}prestashop>sarbacanedesktop_6ebc56e8996c4317b343b6d4af2b69b9'] = 'Un support technique à votre écoute et de nombreuses ressources pour vous aider : vidéos, tutoriels, guides, conseils...';
-$_MODULE['<{sarbacanedesktop}prestashop>sarbacanedesktop_618e3390f38dacdd7b9f0028005bc98a'] = 'Besoin d\'aide ?';
+$_MODULE['<{sarbacanedesktop}prestashop>sarbacanedesktop_4bd9ef088a14b5f6fd9ef86e6f33037f'] = 'Besoin d\'aide ?';
 $_MODULE['<{sarbacanedesktop}prestashop>sarbacanedesktop_6a1e265f92087bb6dd18194833fe946b'] = 'Email :';
 $_MODULE['<{sarbacanedesktop}prestashop>sarbacanedesktop_a4157e38b152bc01311a845b53793107'] = 'support@sarbacane.com';
 $_MODULE['<{sarbacanedesktop}prestashop>sarbacanedesktop_d0398e90769ea6ed2823a3857bcc19ea'] = 'Tél :';
@@ -52,7 +52,7 @@ $_MODULE['<{sarbacanedesktop}prestashop>sarbacanedesktop_e553f43e90bc7b652d11087
 $_MODULE['<{sarbacanedesktop}prestashop>sarbacanedesktop_dd1f775e443ff3b9a89270713580a51b'] = 'Précédent';
 $_MODULE['<{sarbacanedesktop}prestashop>sarbacanedesktop_5293c124179e10cadb2a3f8462297e09'] = 'Téléchargez et installez Sarbacane';
 $_MODULE['<{sarbacanedesktop}prestashop>sarbacanedesktop_30fa0cd0bdc06298169b6351c220cec5'] = 'Créer gratuitement votre compte';
-$_MODULE['<{sarbacanedesktop}prestashop>sarbacanedesktop_1fcb1ab96ca96ad71180fa1c8ea3ab76'] = 'Rendez-vous dans la section \"extensions\" et activez l’extension Prestashop, puis renseignez les éléments suivants :';
+$_MODULE['<{sarbacanedesktop}prestashop>sarbacanedesktop_8b81d9b67a3da0d912af8a260a3211d3'] = 'Rendez-vous dans la section \"extensions\" et activez l’extension Prestashop, puis renseignez les éléments suivants :';
 $_MODULE['<{sarbacanedesktop}prestashop>sarbacanedesktop_02a3a357710cc2a5dfdfb74ed012fb59'] = 'Url';
 $_MODULE['<{sarbacanedesktop}prestashop>sarbacanedesktop_897356954c2cd3d41b221e3f24f99bba'] = 'Clé';
 $_MODULE['<{sarbacanedesktop}prestashop>sarbacanedesktop_d427200bc5f868228c035ae476c211dd'] = 'Générer une nouvelle clé';

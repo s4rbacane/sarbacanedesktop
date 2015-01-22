@@ -7,9 +7,9 @@ $_MODULE['<{sarbacanedesktop}prestashop>sarbacanedesktop_b9d73c15401ec22e0bc1499
 $_MODULE['<{sarbacanedesktop}prestashop>sarbacanedesktop_0e2aa06748e4809dbe978a9d38acb269'] = 'Gestiona tus newsletters y emailing con facilidad';
 $_MODULE['<{sarbacanedesktop}prestashop>sarbacanedesktop_fdeae26665fc4b3a0266f4146f6e6742'] = '//www.youtube.com/embed/ADeyEs4FdGY';
 $_MODULE['<{sarbacanedesktop}prestashop>sarbacanedesktop_a16a6a1971d5eda3675356f22c51dda7'] = 'Este módulo Prestashop permite sincronizar los clientes, cuentas y altas en la newsletter de tu tienda online con la aplicación de mailing Mailify, y disfrutar de innumerables características...';
-$_MODULE['<{sarbacanedesktop}prestashop>sarbacanedesktop_ead40f3b25186d7abcf83169b3202ca1'] = 'Démarrer la configuration (trad)';
+$_MODULE['<{sarbacanedesktop}prestashop>sarbacanedesktop_c707b470dd0a030e5091d208388c32ad'] = 'Iniciar configuración';
 $_MODULE['<{sarbacanedesktop}prestashop>sarbacanedesktop_28e43fd25ca7b7c0032a4d75ed38be08'] = 'Datos de la tienda sincronizados';
-$_MODULE['<{sarbacanedesktop}prestashop>sarbacanedesktop_f6b1861bcca99bf79b6bcc1ffe194d13'] = 'Editeur graphique responsive (trad)';
+$_MODULE['<{sarbacanedesktop}prestashop>sarbacanedesktop_3d6a9428c091d22a7f05c1d18b0d6def'] = 'Editor gráfico responsive';
 $_MODULE['<{sarbacanedesktop}prestashop>sarbacanedesktop_9e971ad51fc8f2b7c76e66c3763a297d'] = 'Estadísticas detalladas';
 $_MODULE['<{sarbacanedesktop}prestashop>sarbacanedesktop_4a70fb18ce269856a738cc498183646a'] = 'Entregabilidad óptima';
 $_MODULE['<{sarbacanedesktop}prestashop>sarbacanedesktop_e92b67bf568e3ede33b31be21f758f00'] = 'Sincronizar y administrar todas las listas de emails de tu tienda Prestashop';
@@ -23,7 +23,7 @@ $_MODULE['<{sarbacanedesktop}prestashop>sarbacanedesktop_92cc4e273a001cbbd5ab73f
 $_MODULE['<{sarbacanedesktop}prestashop>sarbacanedesktop_85d5ed16546482f0321301c9d3e53925'] = 'Elegidos como Mejor Solución de Emailing por los Premios Bsoco';
 $_MODULE['<{sarbacanedesktop}prestashop>sarbacanedesktop_cdf5b25142f3c915147a797e74f8f51c'] = 'Todo lo que necesitas para tener éxito: diseño, personalización, envío y seguimiento de tus campañas';
 $_MODULE['<{sarbacanedesktop}prestashop>sarbacanedesktop_6ebc56e8996c4317b343b6d4af2b69b9'] = 'Soporte técnico y númerosos recursos para asistirte: videos, tutoriales, guías, consejos...';
-$_MODULE['<{sarbacanedesktop}prestashop>sarbacanedesktop_618e3390f38dacdd7b9f0028005bc98a'] = 'Besoin d\'aide ? (trad)';
+$_MODULE['<{sarbacanedesktop}prestashop>sarbacanedesktop_4bd9ef088a14b5f6fd9ef86e6f33037f'] = '¿Necesitas ayuda?';
 $_MODULE['<{sarbacanedesktop}prestashop>sarbacanedesktop_6a1e265f92087bb6dd18194833fe946b'] = 'Email:';
 $_MODULE['<{sarbacanedesktop}prestashop>sarbacanedesktop_a4157e38b152bc01311a845b53793107'] = 'ayuda@mailify.com';
 $_MODULE['<{sarbacanedesktop}prestashop>sarbacanedesktop_d0398e90769ea6ed2823a3857bcc19ea'] = 'Tel:';
@@ -35,7 +35,7 @@ $_MODULE['<{sarbacanedesktop}prestashop>sarbacanedesktop_0c2c964814f9e842054873c
 $_MODULE['<{sarbacanedesktop}prestashop>sarbacanedesktop_9e9aeca013335a15f9a742bb3a0eb328'] = '¿Ya eres usuario Mailify?';
 $_MODULE['<{sarbacanedesktop}prestashop>sarbacanedesktop_93cba07454f06a4a960172bbd6e2a435'] = 'Sí';
 $_MODULE['<{sarbacanedesktop}prestashop>sarbacanedesktop_bafd7322c6e97d25b6299b5d6fe8920b'] = 'No';
-$_MODULE['<{sarbacanedesktop}prestashop>sarbacanedesktop_10ac3d04253ef7e1ddc73e6091c0cd55'] = 'Suivant (trad)';
+$_MODULE['<{sarbacanedesktop}prestashop>sarbacanedesktop_10ac3d04253ef7e1ddc73e6091c0cd55'] = 'Siguiente';
 $_MODULE['<{sarbacanedesktop}prestashop>sarbacanedesktop_1368f8ef4965678f8d470f6804d8d768'] = 'Selecciona tu tienda y la configuración deseada';
 $_MODULE['<{sarbacanedesktop}prestashop>sarbacanedesktop_0ca1485512f786fb1417e1da2b90e9d2'] = 'Crear una lista de suscriptores en Mailify';
 $_MODULE['<{sarbacanedesktop}prestashop>sarbacanedesktop_686acbb3381739aaee2f58e512c3b5a4'] = 'Crear una lista en Mailify de usuarios con cuenta o que hayan hecho un pedido en mi tienda';
@@ -49,11 +49,11 @@ $_MODULE['<{sarbacanedesktop}prestashop>sarbacanedesktop_382b856648bba8f113d86de
 $_MODULE['<{sarbacanedesktop}prestashop>sarbacanedesktop_53380f8ae68bad06718e11bae87f0393'] = '- Importe de pedido más bajo';
 $_MODULE['<{sarbacanedesktop}prestashop>sarbacanedesktop_ac45efcee17c9dda778e8e580b5ed6e6'] = '- Importe de pedido más alto';
 $_MODULE['<{sarbacanedesktop}prestashop>sarbacanedesktop_e553f43e90bc7b652d110876505ca3d9'] = '- Importe medio de pedidos';
-$_MODULE['<{sarbacanedesktop}prestashop>sarbacanedesktop_dd1f775e443ff3b9a89270713580a51b'] = 'Précédent (trad)';
+$_MODULE['<{sarbacanedesktop}prestashop>sarbacanedesktop_dd1f775e443ff3b9a89270713580a51b'] = 'Anterior';
 $_MODULE['<{sarbacanedesktop}prestashop>sarbacanedesktop_5293c124179e10cadb2a3f8462297e09'] = 'Descarga e instala Mailify';
 $_MODULE['<{sarbacanedesktop}prestashop>sarbacanedesktop_30fa0cd0bdc06298169b6351c220cec5'] = 'Crea tu cuenta gratis';
-$_MODULE['<{sarbacanedesktop}prestashop>sarbacanedesktop_1fcb1ab96ca96ad71180fa1c8ea3ab76'] = 'Rendez-vous dans la section \"extensions\" et activez l’extension Prestashop, puis renseignez les éléments suivants : (traduire)';
-$_MODULE['<{sarbacanedesktop}prestashop>sarbacanedesktop_02a3a357710cc2a5dfdfb74ed012fb59'] = 'Url (trad)';
+$_MODULE['<{sarbacanedesktop}prestashop>sarbacanedesktop_8b81d9b67a3da0d912af8a260a3211d3'] = 'Ir a la sección de \"extensiones\" y activa la extensión Prestashop y rellene los campos siguientes:';
+$_MODULE['<{sarbacanedesktop}prestashop>sarbacanedesktop_02a3a357710cc2a5dfdfb74ed012fb59'] = 'Url';
 $_MODULE['<{sarbacanedesktop}prestashop>sarbacanedesktop_897356954c2cd3d41b221e3f24f99bba'] = 'Clave';
 $_MODULE['<{sarbacanedesktop}prestashop>sarbacanedesktop_d427200bc5f868228c035ae476c211dd'] = 'Generar una nueva clave';
 $_MODULE['<{sarbacanedesktop}prestashop>sarbacanedesktop_43340e6cc4e88197d57f8d6d5ea50a46'] = 'Para más detalles';
