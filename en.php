@@ -4,6 +4,7 @@ global $_MODULE;
 $_MODULE = array();
 $_MODULE['<{sarbacanedesktop}prestashop>sarbacanedesktop_1c5e38b58f59e25968d04f213b72c327'] = 'Contact lists - Mailify';
 $_MODULE['<{sarbacanedesktop}prestashop>sarbacanedesktop_b9d73c15401ec22e0bc1499124d418cd'] = 'Synchronize contact lists with data from PrestaShop.';
+$_MODULE['<{sarbacanedesktop}prestashop>sarbacanedesktop_e0cff7f32e63e9b6317a8e13c8824afd'] = 'mailify';
 $_MODULE['<{sarbacanedesktop}prestashop>sarbacanedesktop_0e2aa06748e4809dbe978a9d38acb269'] = 'It\'s easy to manage your newsletter and email campaigns';
 $_MODULE['<{sarbacanedesktop}prestashop>sarbacanedesktop_fdeae26665fc4b3a0266f4146f6e6742'] = '//www.youtube.com/embed/gUGRbfXOJIk';
 $_MODULE['<{sarbacanedesktop}prestashop>sarbacanedesktop_a16a6a1971d5eda3675356f22c51dda7'] = 'This Prestashop module enables you to synchronize clients and accounts that have subscribed to your newsletter from your shop online using Mailify\'s email marketing software.';

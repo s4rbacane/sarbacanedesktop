@@ -4,6 +4,7 @@ global $_MODULE;
 $_MODULE = array();
 $_MODULE['<{sarbacanedesktop}prestashop>sarbacanedesktop_1c5e38b58f59e25968d04f213b72c327'] = 'Listes de contacts - Sarbacane Desktop';
 $_MODULE['<{sarbacanedesktop}prestashop>sarbacanedesktop_b9d73c15401ec22e0bc1499124d418cd'] = 'Synchronisez des listes de contacts avec les données issues de PrestaShop.';
+$_MODULE['<{sarbacanedesktop}prestashop>sarbacanedesktop_e0cff7f32e63e9b6317a8e13c8824afd'] = 'sarbacane';
 $_MODULE['<{sarbacanedesktop}prestashop>sarbacanedesktop_0e2aa06748e4809dbe978a9d38acb269'] = 'Gérer vos newsletters et emailing en toute simplicité';
 $_MODULE['<{sarbacanedesktop}prestashop>sarbacanedesktop_fdeae26665fc4b3a0266f4146f6e6742'] = '//www.youtube.com/embed/eLMy2tSSYgE';
 $_MODULE['<{sarbacanedesktop}prestashop>sarbacanedesktop_a16a6a1971d5eda3675356f22c51dda7'] = 'Ce module Prestashop vous permet de synchroniser les clients, comptes, inscrits à la newsletter de votre boutique avec le logiciel emailing Sarbacane Desktop, et de profiter de ces innombrables fonctionnalités...';

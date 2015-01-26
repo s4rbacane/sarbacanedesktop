@@ -27,10 +27,9 @@
 #sarbacanedesktop p, #sarbacanedesktop form p{margin:0 0 8.5px;padding:0;}
 #sarbacanedesktop a{color:#f06800;}
 #sarbacanedesktop .sd_header{padding-top:20px;padding-bottom:20px;}
-#sarbacanedesktop .sd_logo_fr, #sarbacanedesktop .sd_logo,#sarbacanedesktop .sd_picto1, #sarbacanedesktop .sd_picto2, #sarbacanedesktop .sd_picto3, #sarbacanedesktop .sd_picto4, #sarbacanedesktop .sd_info_container_left > div > div > p, #sarbacanedesktop .sd_info_line,#sarbacanedesktop .sd_step_line, #sarbacanedesktop .sd_step2_info, #sarbacanedesktop .sd_info_container_right{background-repeat:no-repeat;background-image:url('../img/sd.png');}
-#sarbacanedesktop .sd_logo, #sarbacanedesktop .sd_logo_fr{margin:auto;}
-#sarbacanedesktop .sd_logo_fr{width:318px;height:45px;background-position:-150px -99px;}
-#sarbacanedesktop .sd_logo{width:192px;height:55px;background-position:-469px -98px;}
+#sarbacanedesktop .sd_logo_sarbacane, #sarbacanedesktop .sd_logo_mailify, #sarbacanedesktop .sd_picto1, #sarbacanedesktop .sd_picto2, #sarbacanedesktop .sd_picto3, #sarbacanedesktop .sd_picto4, #sarbacanedesktop .sd_info_container_left > div > div > p, #sarbacanedesktop .sd_info_line,#sarbacanedesktop .sd_step_line, #sarbacanedesktop .sd_step2_info, #sarbacanedesktop .sd_info_container_right{background-repeat:no-repeat;background-image:url('../img/sd.png');}
+#sarbacanedesktop .sd_logo_sarbacane{margin:auto;width:318px;height:45px;background-position:-150px -99px;}
+#sarbacanedesktop .sd_logo_mailify{margin:auto;width:192px;height:55px;background-position:-469px -98px;}
 #sarbacanedesktop .sd_separator{border-top:1px solid #ebedf2;padding-bottom:5px;margin-top:5px;}
 #sarbacanedesktop .sd_title{font-size:23px;text-align:center;}
 #sarbacanedesktop .sd_title_separator_page, #sarbacanedesktop .sd_title_separator_account_offer{border-top:2px solid #f06800;width:75px;margin:auto;}

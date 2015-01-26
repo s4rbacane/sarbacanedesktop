@@ -811,9 +811,6 @@ class Sarbacanedesktop extends Module
 				}
 			}
 		}
-		$logo_class = 'sd_logo';
-		if ($this->context->language->iso_code == 'fr')
-			$logo_class .= '_fr';
 		$sd_submit_url = 'index.php?controller='.Tools::safeOutput(Tools::getValue('controller')).'&token='.Tools::safeOutput(Tools::getValue('token'));
 		$sd_submit_url .= '&configure='.$this->name.'&tab_module='.$this->tab.'&module_name='.$this->name.'#sd_step';
 		$this->context->smarty->assign(array(
@@ -825,7 +822,6 @@ class Sarbacanedesktop extends Module
 			'sd_is_user' => $this->getConfiguration('sd_is_user'),
 			'displayed_step' => $displayed_step,
 			'stores_array' => $this->getStoresArray(),
-			'logo_class' => $logo_class,
 			'website_url' => Tools::getHttpHost(true).__PS_BASE_URI__,
 			'css_url' => $this->_path.'css/sarbacanedesktop.css',
 			'js_url' => $this->_path.'js/sarbacanedesktop.js'

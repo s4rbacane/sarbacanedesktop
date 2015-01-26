@@ -26,7 +26,7 @@
 <script type="text/javascript" src="{$js_url|escape:'htmlall':'UTF-8'}"></script>
 <div id="sarbacanedesktop">
 	<div class="sd_header">
-		<div class="{$logo_class|escape:'htmlall':'UTF-8'}"></div>
+		<div class="sd_logo_{l s='sarbacane' mod='sarbacanedesktop'}"></div>
 	</div>
 	<p class="sd_title">{l s='It\'s easy to manage your newsletter and email campaigns' mod='sarbacanedesktop'}</p>
 	<div class="sd_title_separator_page"></div>
