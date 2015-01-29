@@ -277,13 +277,16 @@ class Sarbacanedesktop extends Module
 		return array('N', 'C');
 	}
 
-	private function checkIfNewsletterModule()
+	private function checkIfNewsletterModule($id_shop)
 	{
 		$rq_sql = '
 		SELECT count(*)
-		FROM `'._DB_PREFIX_.'module`
-		WHERE name = \'blocknewsletter\'
-		AND `active` = 1';
+		FROM `'._DB_PREFIX_.'module` m,
+		`'._DB_PREFIX_.'module_shop` ms
+		WHERE m.`name` = \'blocknewsletter\'
+		AND m.`active` = 1
+		AND m.`id_module` = ms.`id_module`
+		AND ms.`id_shop` = '.(int)$id_shop;
 		$block_newsletter = Db::getInstance()->getValue($rq_sql);
 		if ($block_newsletter == 1)
 		{
@@ -344,7 +347,7 @@ class Sarbacanedesktop extends Module
 
 	private function processNewSubscribers($list_type, $id_shop, $id_sd, $type_action = 'display')
 	{
-		$check_if_newsletter_module = $this->checkIfNewsletterModule();
+		$check_if_newsletter_module = $this->checkIfNewsletterModule($id_shop);
 		$shop_customer_selection = $this->getShopCustomerSelection($id_shop);
 		$rq_sql_limit = '2500';
 		if ($type_action == 'is_updated')
@@ -375,14 +378,8 @@ class Sarbacanedesktop extends Module
 					$rq_sql .= '
 					UNION ALL (
 						SELECT n.`email`, \'\' AS `lastname`, \'\' AS `firstname`
-						FROM `'._DB_PREFIX_.'newsletter` n,
-						`'._DB_PREFIX_.'module` m,
-						`'._DB_PREFIX_.'module_shop` ms
-						WHERE m.`name` = \'blocknewsletter\'
-						AND m.`active` = 1
-						AND m.`id_module` = ms.`id_module`
-						AND ms.`id_shop` = n.`id_shop`
-						AND n.`id_shop` = '.(int)$id_shop.'
+						FROM `'._DB_PREFIX_.'newsletter` n
+						WHERE n.`id_shop` = '.(int)$id_shop.'
 						AND n.`active` = 1';
 						$rq_sql .= '
 						AND n.`email` NOT IN (
@@ -508,7 +505,7 @@ class Sarbacanedesktop extends Module
 
 	private function processNewUnsubscribers($list_type, $id_shop, $id_sd, $type_action = 'display')
 	{
-		$check_if_newsletter_module = $this->checkIfNewsletterModule();
+		$check_if_newsletter_module = $this->checkIfNewsletterModule($id_shop);
 		$shop_customer_selection = $this->getShopCustomerSelection($id_shop);
 		$rq_sql_limit = '2500';
 		if ($type_action == 'is_updated')
