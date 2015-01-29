@@ -522,14 +522,8 @@ class Sarbacanedesktop extends Module
 				$rq_sql .= '
 				LEFT JOIN (
 					SELECT n.`email`, n.id_shop
-					FROM `'._DB_PREFIX_.'newsletter` n,
-					`'._DB_PREFIX_.'module` m,
-					`'._DB_PREFIX_.'module_shop` ms
-					WHERE m.`name` = \'blocknewsletter\'
-					AND m.`active` = 1
-					AND m.`id_module` = ms.`id_module`
-					AND ms.`id_shop` = n.`id_shop`
-					AND n.`id_shop` = '.(int)$id_shop.'
+					FROM `'._DB_PREFIX_.'newsletter` n
+					WHERE n.`id_shop` = '.(int)$id_shop.'
 					AND n.`active` = 1
 				) AS n ON n.`email` = s.`email`';
 			}
