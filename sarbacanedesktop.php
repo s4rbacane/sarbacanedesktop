@@ -349,9 +349,9 @@ class Sarbacanedesktop extends Module
 	{
 		$check_if_newsletter_module = $this->checkIfNewsletterModule($id_shop);
 		$shop_customer_selection = $this->getShopCustomerSelection($id_shop);
-		$rq_sql_limit = '2500';
+		$rq_sql_limit = '';
 		if ($type_action == 'is_updated')
-			$rq_sql_limit = '1';
+			$rq_sql_limit = 'LIMIT 0, 1';
 		if ($list_type == 'N')
 		{
 			$rq_sql = '
@@ -374,7 +374,6 @@ class Sarbacanedesktop extends Module
 					)
 				)';
 				if ($check_if_newsletter_module)
-				{
 					$rq_sql .= '
 					UNION ALL (
 						SELECT n.`email`, \'\' AS `lastname`, \'\' AS `firstname`
@@ -390,15 +389,17 @@ class Sarbacanedesktop extends Module
 							AND cus.`newsletter` = 1
 						)
 					)';
-				}
 			$rq_sql .= '
 			) AS `t`
-			LEFT JOIN `'._DB_PREFIX_.'sarbacanedesktop` s ON (
-				s.`email` = t.`email` AND s.`list_type` = \'N\' AND s.`id_shop` = \''.pSql($id_shop).'\' AND s.`id_sd` = \''.pSql($id_sd).'\'
+			WHERE t.`email` NOT IN (
+				SELECT s.`email`
+				FROM `'._DB_PREFIX_.'sarbacanedesktop` s
+				WHERE s.`list_type` = \'N\'
+				AND s.`id_shop` = \''.pSql($id_shop).'\'
+				AND s.`id_sd` = \''.pSql($id_sd).'\'
 				AND s.`customer_data` = CONCAT(t.`lastname`, \'_\', t.`firstname`)
 			)
-			WHERE s.`id_shop` IS NULL
-			LIMIT 0, '.$rq_sql_limit;
+			'.$rq_sql_limit;
 		}
 		else if ($list_type == 'C')
 		{
@@ -437,158 +438,166 @@ class Sarbacanedesktop extends Module
 				)
 				GROUP BY c.`email`
 			) AS `t`
-			LEFT JOIN `'._DB_PREFIX_.'sarbacanedesktop` s ON (
-				s.`email` = t.`email` AND s.`list_type` = \'C\' AND s.`id_shop` = \''.pSql($id_shop).'\' AND s.`id_sd` = \''.pSql($id_sd).'\'
+			WHERE t.`email` NOT IN (
+				SELECT s.`email`
+				FROM `'._DB_PREFIX_.'sarbacanedesktop` s
+				WHERE s.`list_type` = \'C\'
+				AND s.`id_shop` = \''.pSql($id_shop).'\'
+				AND s.`id_sd` = \''.pSql($id_sd).'\'
 				AND s.`customer_data` = CONCAT(t.`lastname`, \'_\', t.`firstname`, t.`optin`)';
 				if ($add_customer_data)
 					$rq_sql .= '
 					AND s.`orders_data` = CONCAT(t.`amount_min_order`, t.`amount_max_order`, t.`nb_orders`, t.`amount_all_orders`)';
 			$rq_sql .= '
 			)
-			WHERE s.`id_shop` IS NULL
-			LIMIT 0, '.$rq_sql_limit;
+			'.$rq_sql_limit;
 		}
 		else
 			return array();
-		$rq = Db::getInstance()->executeS($rq_sql);
+		$rq = Db::getInstance()->query($rq_sql);
 		$rq_sql_insert = '';
-		if (is_array($rq))
+		$i = 0;
+		while ($r = Db::getInstance()->nextRow($rq))
 		{
-			$nb_results = count($rq);
 			if ($type_action == 'is_updated')
-				return $nb_results;
-			$i = 0;
-			foreach ($rq as $key => $r)
+				return 1;
+			$line = $this->dQuote($r['email']).';';
+			$line .= $this->dQuote($r['lastname']).';'.$this->dQuote($r['firstname']);
+			if ($list_type == 'C')
 			{
-				$line = $this->dQuote($r['email']).';';
-				$line .= $this->dQuote($r['lastname']).';'.$this->dQuote($r['firstname']);
-				if ($list_type == 'C')
+				$line .= ';'.$r['optin'];
+				if ($add_customer_data)
 				{
-					$line .= ';'.$r['optin'];
-					if ($add_customer_data)
-					{
-						$line .= ';'.$this->dQuote($r['date_first_order']).';'.$this->dQuote($r['date_last_order']);
-						$line .= ';'.(float)$r['amount_min_order'].';'.(float)$r['amount_max_order'].';'.(float)$r['amount_avg_order'];
-						$line .= ';'.(int)$r['nb_orders'].';'.(float)$r['amount_all_orders'];
-					}
+					$line .= ';'.$this->dQuote($r['date_first_order']).';'.$this->dQuote($r['date_last_order']);
+					$line .= ';'.(float)$r['amount_min_order'].';'.(float)$r['amount_max_order'].';'.(float)$r['amount_avg_order'];
+					$line .= ';'.(int)$r['nb_orders'].';'.(float)$r['amount_all_orders'];
 				}
-				$line .= ';S'."\n";
-				echo $line;
-				$customer_data = $r['lastname'].'_'.$r['firstname'];
-				$orders_data = '';
-				if ($list_type == 'C')
-				{
-					$customer_data .= $r['optin'];
-					if ($add_customer_data)
-						$orders_data = $r['amount_min_order'].$r['amount_max_order'].$r['nb_orders'].$r['amount_all_orders'];
-				}
-				$insert_values = '\''.pSql($r['email']).'\', \''.pSql($list_type).'\', \''.pSql($id_shop).'\', \''.pSql($id_sd).'\', \'';
-				$insert_values .= pSql($customer_data).'\', \''.pSql($orders_data).'\'';
-				$rq_sql_insert .= ' ('.$insert_values.'),';
-				if ($key + 1 == $nb_results || $i == 200)
-				{
-					$rq_sql_insert = Tools::substr($rq_sql_insert, 0, -1);
-					$rq_sql = '
-					INSERT INTO `'._DB_PREFIX_.'sarbacanedesktop` (`email`, `list_type`, `id_shop`, `id_sd`, `customer_data`, `orders_data`) VALUES
-					'.$rq_sql_insert.'
-					ON DUPLICATE KEY UPDATE
-					`customer_data` = VALUES(`customer_data`),
-					`orders_data` = VALUES(`orders_data`)';
-					Db::getInstance()->execute($rq_sql);
-					$rq_sql_insert = '';
-					$i = 0;
-				}
-				$i++;
 			}
+			$line .= ';S'."\n";
+			echo $line;
+			$customer_data = $r['lastname'].'_'.$r['firstname'];
+			$orders_data = '';
+			if ($list_type == 'C')
+			{
+				$customer_data .= $r['optin'];
+				if ($add_customer_data)
+					$orders_data = $r['amount_min_order'].$r['amount_max_order'].$r['nb_orders'].$r['amount_all_orders'];
+			}
+			$insert_values = '\''.pSql($r['email']).'\', \''.pSql($list_type).'\', \''.pSql($id_shop).'\', \''.pSql($id_sd).'\', \'';
+			$insert_values .= pSql($customer_data).'\', \''.pSql($orders_data).'\'';
+			$rq_sql_insert .= ' ('.$insert_values.'),';
+			if ($i == 500)
+			{
+				$this->insertNewSubscribers($rq_sql_insert);
+				$rq_sql_insert = '';
+				$i = 0;
+			}
+			$i++;
 		}
+		if ($rq_sql_insert != '')
+			$this->insertNewSubscribers($rq_sql_insert);
+	}
+
+	private function insertNewSubscribers($rq_sql_insert)
+	{
+		$rq_sql_insert = Tools::substr($rq_sql_insert, 0, -1);
+		$rq_sql = '
+		INSERT INTO `'._DB_PREFIX_.'sarbacanedesktop` (`email`, `list_type`, `id_shop`, `id_sd`, `customer_data`, `orders_data`) VALUES
+		'.$rq_sql_insert.'
+		ON DUPLICATE KEY UPDATE
+		`customer_data` = VALUES(`customer_data`),
+		`orders_data` = VALUES(`orders_data`)';
+		Db::getInstance()->execute($rq_sql);
 	}
 
 	private function processNewUnsubscribers($list_type, $id_shop, $id_sd, $type_action = 'display')
 	{
 		$check_if_newsletter_module = $this->checkIfNewsletterModule($id_shop);
 		$shop_customer_selection = $this->getShopCustomerSelection($id_shop);
-		$rq_sql_limit = '2500';
+		$rq_sql_limit = '';
 		if ($type_action == 'is_updated')
-			$rq_sql_limit = '1';
+			$rq_sql_limit = 'LIMIT 0, 1';
 		if ($list_type == 'N')
 		{
 			$rq_sql = '
 			SELECT s.`email`
 			FROM `'._DB_PREFIX_.'sarbacanedesktop` s
-			LEFT JOIN `'._DB_PREFIX_.'customer` c
-				ON (c.`email` = s.`email` AND c.'.$shop_customer_selection.' AND c.`deleted` = 0 AND c.`newsletter` = 1)';
+			WHERE s.`email` NOT IN (
+				SELECT c.`email`
+				FROM `'._DB_PREFIX_.'customer` c
+				WHERE c.'.$shop_customer_selection.' AND c.`deleted` = 0 AND c.`newsletter` = 1
+			)';
 			if ($check_if_newsletter_module)
-			{
 				$rq_sql .= '
-				LEFT JOIN (
-					SELECT n.`email`, n.id_shop
+				AND s.`email` NOT IN (
+					SELECT n.`email`
 					FROM `'._DB_PREFIX_.'newsletter` n
 					WHERE n.`id_shop` = '.(int)$id_shop.'
 					AND n.`active` = 1
-				) AS n ON n.`email` = s.`email`';
-			}
+				)';
 			$rq_sql .= '
-			WHERE s.`list_type` = \'N\'
+			AND s.`list_type` = \'N\'
 			AND s.`id_shop` = \''.pSql($id_shop).'\'
 			AND s.`id_sd` = \''.pSql($id_sd).'\'
-			AND c.`id_shop` IS NULL';
-			if ($check_if_newsletter_module)
-				$rq_sql .= '
-				AND n.`id_shop` IS NULL';
-			$rq_sql .= '
-			LIMIT 0, '.$rq_sql_limit;
+			'.$rq_sql_limit;
 		}
 		else if ($list_type == 'C')
 		{
 			$rq_sql = '
 			SELECT s.`email`
 			FROM `'._DB_PREFIX_.'sarbacanedesktop` s
-			LEFT JOIN `'._DB_PREFIX_.'customer` c ON (c.`email` = s.`email` AND c.'.$shop_customer_selection.' AND c.`deleted` = 0)
-			WHERE s.`list_type` = \'C\'
+			WHERE s.`email` NOT IN (
+				SELECT c.`email`
+				FROM `'._DB_PREFIX_.'customer` c
+				WHERE c.'.$shop_customer_selection.' AND c.`deleted` = 0
+			)
+			AND s.`list_type` = \'C\'
 			AND s.`id_shop` = \''.pSql($id_shop).'\'
 			AND s.`id_sd` = \''.pSql($id_sd).'\'
-			AND c.`id_shop` IS NULL
-			LIMIT 0, '.$rq_sql_limit;
+			'.$rq_sql_limit;
 		}
 		else
 			return;
-		$rq = Db::getInstance()->executeS($rq_sql);
+		$rq = Db::getInstance()->query($rq_sql);
 		$rq_sql_delete = '';
-		if (is_array($rq))
+		$i = 0;
+		while ($r = Db::getInstance()->nextRow($rq))
 		{
-			$nb_results = count($rq);
 			if ($type_action == 'is_updated')
-				return $nb_results;
-			$i = 0;
-			foreach ($rq as $key => $r)
+				return 1;
+			$line = $this->dQuote($r['email']).';;';
+			if ($list_type == 'C')
 			{
-				$line = $this->dQuote($r['email']).';;';
-				if ($list_type == 'C')
-				{
-					$line .= ';';
-					if ($this->checkIfListWithCustomerData($list_type, $id_shop))
-						$line .= ';;;;;;;';
-				}
-				$line .= ';U'."\n";
-				echo $line;
-				$rq_sql_delete .= '(\''.pSql($r['email']).'\'),';
-				if ($key + 1 == $nb_results || $i == 200)
-				{
-					$rq_sql_delete = Tools::substr($rq_sql_delete, 0, -1);
-					$rq_sql = '
-					DELETE FROM `'._DB_PREFIX_.'sarbacanedesktop`
-					WHERE (`email`)
-					IN ('.$rq_sql_delete.')
-					AND `list_type` = \''.pSql($list_type).'\'
-					AND `id_shop` = \''.pSql($id_shop).'\'
-					AND `id_sd` = \''.pSql($id_sd).'\'';
-					Db::getInstance()->execute($rq_sql);
-					$rq_sql_delete = '';
-					$i = 0;
-				}
-				$i++;
+				$line .= ';';
+				if ($this->checkIfListWithCustomerData($list_type, $id_shop))
+					$line .= ';;;;;;;';
 			}
+			$line .= ';U'."\n";
+			echo $line;
+			$rq_sql_delete .= '(\''.pSql($r['email']).'\'),';
+			if ($i == 500)
+			{
+				$this->deleteNewUnsubscribers($rq_sql_delete, $list_type, $id_shop, $id_sd);
+				$rq_sql_delete = '';
+				$i = 0;
+			}
+			$i++;
 		}
+		if ($rq_sql_delete != '')
+			$this->deleteNewUnsubscribers($rq_sql_delete, $list_type, $id_shop, $id_sd);
+	}
+
+	private function deleteNewUnsubscribers($rq_sql_delete, $list_type, $id_shop, $id_sd)
+	{
+		$rq_sql_delete = Tools::substr($rq_sql_delete, 0, -1);
+		$rq_sql = '
+		DELETE FROM `'._DB_PREFIX_.'sarbacanedesktop`
+		WHERE (`email`)
+		IN ('.$rq_sql_delete.')
+		AND `list_type` = \''.pSql($list_type).'\'
+		AND `id_shop` = \''.pSql($id_shop).'\'
+		AND `id_sd` = \''.pSql($id_sd).'\'';
+		Db::getInstance()->execute($rq_sql);
 	}
 
 	private function getConfiguration($return = 'nb_configured')
