@@ -349,9 +349,10 @@ class Sarbacanedesktop extends Module
 	{
 		$check_if_newsletter_module = $this->checkIfNewsletterModule($id_shop);
 		$shop_customer_selection = $this->getShopCustomerSelection($id_shop);
-		$rq_sql_limit = '';
 		if ($type_action == 'is_updated')
 			$rq_sql_limit = 'LIMIT 0, 1';
+		else
+			$rq_sql_limit = 'LIMIT 0, 50000';
 		if ($list_type == 'N')
 		{
 			$rq_sql = '
@@ -514,9 +515,10 @@ class Sarbacanedesktop extends Module
 	{
 		$check_if_newsletter_module = $this->checkIfNewsletterModule($id_shop);
 		$shop_customer_selection = $this->getShopCustomerSelection($id_shop);
-		$rq_sql_limit = '';
 		if ($type_action == 'is_updated')
 			$rq_sql_limit = 'LIMIT 0, 1';
+		else
+			$rq_sql_limit = 'LIMIT 0, 50000';
 		if ($list_type == 'N')
 		{
 			$rq_sql = '
