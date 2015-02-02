@@ -109,6 +109,10 @@ class Sarbacanedesktop extends Module
 							{
 								if (count($sd_list_array) > 0)
 								{
+									header('Content-type: text/html; charset=utf-8');
+									ini_set('max_execution_time', 1200);
+									ob_implicit_flush(true);
+									ob_end_flush();
 									if (Tools::getIsset('list'))
 									{
 										$list = Tools::getValue('list');
@@ -158,16 +162,16 @@ class Sarbacanedesktop extends Module
 
 	private function processNewUnsubcribersAndSubscribers($list_type, $id_shop, $id_sd)
 	{
-		$line = 'email;lastname;firstname';
+		$content = 'email;lastname;firstname';
 		if ($list_type == 'C')
 		{
-			$line .= ';partners';
+			$content .= ';partners';
 			if ($this->checkIfListWithCustomerData($list_type, $id_shop))
-				$line .= ';date_first_order;date_last_order;amount_min_order;amount_max_order;amount_avg_order;nb_orders;amount_all_orders';
+				$content .= ';date_first_order;date_last_order;amount_min_order;amount_max_order;amount_avg_order;nb_orders;amount_all_orders';
 		}
-		$line .= ';action';
-		$line .= "\n";
-		echo $line;
+		$content .= ';action';
+		$content .= "\n";
+		echo $content;
 		$this->processNewUnsubscribers($list_type, $id_shop, $id_sd);
 		$this->processNewSubscribers($list_type, $id_shop, $id_sd);
 	}
@@ -199,7 +203,7 @@ class Sarbacanedesktop extends Module
 	private function getFormattedContentShops($id_sd)
 	{
 		$stores = $this->getStoresArray();
-		echo 'list_id;name;reset;is_updated;type;version'."\n";
+		$content = 'list_id;name;reset;is_updated;type;version'."\n";
 		$sd_list_array = $this->getListConfiguration('array');
 		$list_array = array();
 		foreach ($sd_list_array as $list)
@@ -218,10 +222,11 @@ class Sarbacanedesktop extends Module
 					$store_list .= $this->listIsResetted($store['id_shop'], $list['list_type'], $id_sd).';';
 					$store_list .= $this->listIsUpdated($store['id_shop'], $list['list_type'], $id_sd).';';
 					$store_list .= 'Prestashop;'.$this->version."\n";
-					echo $store_list;
+					$content .= $store_list;
 				}
 			}
 		}
+		echo $content;
 	}
 
 	private function listIsResetted($id_shop, $list_type, $id_sd)
@@ -349,10 +354,9 @@ class Sarbacanedesktop extends Module
 	{
 		$check_if_newsletter_module = $this->checkIfNewsletterModule($id_shop);
 		$shop_customer_selection = $this->getShopCustomerSelection($id_shop);
+		$rq_sql_limit = '';
 		if ($type_action == 'is_updated')
 			$rq_sql_limit = 'LIMIT 0, 1';
-		else
-			$rq_sql_limit = 'LIMIT 0, 50000';
 		if ($list_type == 'N')
 		{
 			$rq_sql = '
@@ -458,24 +462,24 @@ class Sarbacanedesktop extends Module
 		$rq = Db::getInstance()->query($rq_sql);
 		$rq_sql_insert = '';
 		$i = 0;
+		$content = '';
 		while ($r = Db::getInstance()->nextRow($rq))
 		{
 			if ($type_action == 'is_updated')
 				return 1;
-			$line = $this->dQuote($r['email']).';';
-			$line .= $this->dQuote($r['lastname']).';'.$this->dQuote($r['firstname']);
+			$content .= $this->dQuote($r['email']).';';
+			$content .= $this->dQuote($r['lastname']).';'.$this->dQuote($r['firstname']);
 			if ($list_type == 'C')
 			{
-				$line .= ';'.$r['optin'];
+				$content .= ';'.$r['optin'];
 				if ($add_customer_data)
 				{
-					$line .= ';'.$this->dQuote($r['date_first_order']).';'.$this->dQuote($r['date_last_order']);
-					$line .= ';'.(float)$r['amount_min_order'].';'.(float)$r['amount_max_order'].';'.(float)$r['amount_avg_order'];
-					$line .= ';'.(int)$r['nb_orders'].';'.(float)$r['amount_all_orders'];
+					$content .= ';'.$this->dQuote($r['date_first_order']).';'.$this->dQuote($r['date_last_order']);
+					$content .= ';'.(float)$r['amount_min_order'].';'.(float)$r['amount_max_order'].';'.(float)$r['amount_avg_order'];
+					$content .= ';'.(int)$r['nb_orders'].';'.(float)$r['amount_all_orders'];
 				}
 			}
-			$line .= ';S'."\n";
-			echo $line;
+			$content .= ';S'."\n";
 			$customer_data = $r['lastname'].'_'.$r['firstname'];
 			$orders_data = '';
 			if ($list_type == 'C')
@@ -489,18 +493,20 @@ class Sarbacanedesktop extends Module
 			$rq_sql_insert .= ' ('.$insert_values.'),';
 			if ($i == 500)
 			{
-				$this->insertNewSubscribers($rq_sql_insert);
+				$this->addedNewSubscribers($content, $rq_sql_insert);
 				$rq_sql_insert = '';
 				$i = 0;
+				$content = '';
 			}
 			$i++;
 		}
 		if ($rq_sql_insert != '')
-			$this->insertNewSubscribers($rq_sql_insert);
+			$this->addedNewSubscribers($content, $rq_sql_insert);
 	}
 
-	private function insertNewSubscribers($rq_sql_insert)
+	private function addedNewSubscribers($content, $rq_sql_insert)
 	{
+		echo $content;
 		$rq_sql_insert = Tools::substr($rq_sql_insert, 0, -1);
 		$rq_sql = '
 		INSERT INTO `'._DB_PREFIX_.'sarbacanedesktop` (`email`, `list_type`, `id_shop`, `id_sd`, `customer_data`, `orders_data`) VALUES
@@ -515,10 +521,9 @@ class Sarbacanedesktop extends Module
 	{
 		$check_if_newsletter_module = $this->checkIfNewsletterModule($id_shop);
 		$shop_customer_selection = $this->getShopCustomerSelection($id_shop);
+		$rq_sql_limit = '';
 		if ($type_action == 'is_updated')
 			$rq_sql_limit = 'LIMIT 0, 1';
-		else
-			$rq_sql_limit = 'LIMIT 0, 50000';
 		if ($list_type == 'N')
 		{
 			$rq_sql = '
@@ -563,34 +568,36 @@ class Sarbacanedesktop extends Module
 		$rq = Db::getInstance()->query($rq_sql);
 		$rq_sql_delete = '';
 		$i = 0;
+		$content = '';
 		while ($r = Db::getInstance()->nextRow($rq))
 		{
 			if ($type_action == 'is_updated')
 				return 1;
-			$line = $this->dQuote($r['email']).';;';
+			$content .= $this->dQuote($r['email']).';;';
 			if ($list_type == 'C')
 			{
-				$line .= ';';
+				$content .= ';';
 				if ($this->checkIfListWithCustomerData($list_type, $id_shop))
-					$line .= ';;;;;;;';
+					$content .= ';;;;;;;';
 			}
-			$line .= ';U'."\n";
-			echo $line;
+			$content .= ';U'."\n";
 			$rq_sql_delete .= '(\''.pSql($r['email']).'\'),';
 			if ($i == 500)
 			{
-				$this->deleteNewUnsubscribers($rq_sql_delete, $list_type, $id_shop, $id_sd);
+				$this->deletedNewUnsubscribers($content, $rq_sql_delete, $list_type, $id_shop, $id_sd);
 				$rq_sql_delete = '';
 				$i = 0;
+				$content = '';
 			}
 			$i++;
 		}
 		if ($rq_sql_delete != '')
-			$this->deleteNewUnsubscribers($rq_sql_delete, $list_type, $id_shop, $id_sd);
+			$this->deletedNewUnsubscribers($content, $rq_sql_delete, $list_type, $id_shop, $id_sd);
 	}
 
-	private function deleteNewUnsubscribers($rq_sql_delete, $list_type, $id_shop, $id_sd)
+	private function deletedNewUnsubscribers($content, $rq_sql_delete, $list_type, $id_shop, $id_sd)
 	{
+		echo $content;
 		$rq_sql_delete = Tools::substr($rq_sql_delete, 0, -1);
 		$rq_sql = '
 		DELETE FROM `'._DB_PREFIX_.'sarbacanedesktop`

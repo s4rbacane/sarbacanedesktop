@@ -23,10 +23,7 @@
 *  @license   http://opensource.org/licenses/afl-3.0.php  Academic Free License (AFL 3.0)
 */
 
-if (function_exists('set_time_limit'))
-	set_time_limit(600);
 require_once(dirname(__FILE__).'/../../config/config.inc.php');
-require_once(dirname(__FILE__).'/../../init.php');
 require_once(dirname(__FILE__).'/sarbacanedesktop.php');
 $s = new Sarbacanedesktop();
 $s->initSynchronisation();
