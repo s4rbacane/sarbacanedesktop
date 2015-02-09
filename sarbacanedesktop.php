@@ -55,8 +55,7 @@ class Sarbacanedesktop extends Module
 			`list_type` varchar(20) NOT NULL,
 			`id_shop` varchar(20) NOT NULL,
 			`id_sd` varchar(20) NOT NULL,
-			`customer_data` varchar(100) NOT NULL,
-			`orders_data` varchar(150) NOT NULL,
+			`customer_data` varchar(200) NOT NULL,
 			PRIMARY KEY(`email`, `list_type`, `id_shop`, `id_sd`)
 		) ENGINE='._MYSQL_ENGINE_.' DEFAULT CHARSET=utf8');
 		$result4  = Db::getInstance()->execute('
@@ -102,42 +101,32 @@ class Sarbacanedesktop extends Module
 					if ($id_sd != '')
 					{
 						$configuration = $this->getConfiguration('all');
-						if ($configuration['sd_token'] != '' && $configuration['sd_list'] != '')
+						$sd_list_array = $this->getListConfiguration('array');
+						if ($configuration['sd_token'] != '' && $configuration['sd_list'] != '' && is_array($sd_list_array) && count($sd_list_array) > 0)
 						{
-							$sd_list_array = $this->getListConfiguration('array');
-							if (is_array($sd_list_array))
+							header('Content-type: text/html; charset=utf-8');
+							ini_set('max_execution_time', 1200);
+							ob_implicit_flush(true);
+							if (Tools::getIsset('list'))
 							{
-								if (count($sd_list_array) > 0)
+								$list = Tools::getValue('list');
+								$id_shop = $this->getStoreidFromList($list);
+								$list_type = $this->getListTypeFromList($list);
+								$list_type_array = $this->getListTypeArray();
+								if (in_array($list_type, $list_type_array))
 								{
-									header('Content-type: text/html; charset=utf-8');
-									ini_set('max_execution_time', 1200);
-									ob_implicit_flush(true);
-									ob_end_flush();
-									if (Tools::getIsset('list'))
+									$id_and_list = $id_shop.$list_type;
+									if (($list_type == 'N' && in_array($id_and_list.'0', $sd_list_array))
+									|| ($list_type == 'C' && (in_array($id_and_list.'0', $sd_list_array) || in_array($id_and_list.'1', $sd_list_array))))
 									{
-										$list = Tools::getValue('list');
-										$id_shop = $this->getStoreidFromList($list);
-										$list_type = $this->getListTypeFromList($list);
-										$list_type_array = $this->getListTypeArray();
-										if (in_array($list_type, $list_type_array))
-										{
-											$id_and_list = $id_shop.$list_type;
-											if (($list_type == 'N' && in_array($id_and_list.'0', $sd_list_array))
-											|| ($list_type == 'C' && (in_array($id_and_list.'0', $sd_list_array) || in_array($id_and_list.'1', $sd_list_array))))
-											{
-												if (Tools::getIsset('action'))
-												{
-													if (Tools::getValue('action') == 'reset')
-														$this->resetList($list_type, $id_shop, $id_sd);
-												}
-												$this->processNewUnsubcribersAndSubscribers($list_type, $id_shop, $id_sd);
-											}
-										}
+										if (Tools::getIsset('action') && Tools::getValue('action') == 'reset')
+											$this->resetList($list_type, $id_shop, $id_sd);
+										$this->processNewUnsubcribersAndSubscribers($list_type, $id_shop, $id_sd);
 									}
-									else
-										$this->getFormattedContentShops($id_sd);
 								}
 							}
+							else
+								$this->getFormattedContentShops($id_sd);
 						}
 					}
 				}
@@ -384,8 +373,7 @@ class Sarbacanedesktop extends Module
 						SELECT n.`email`, \'\' AS `lastname`, \'\' AS `firstname`
 						FROM `'._DB_PREFIX_.'newsletter` n
 						WHERE n.`id_shop` = '.(int)$id_shop.'
-						AND n.`active` = 1';
-						$rq_sql .= '
+						AND n.`active` = 1
 						AND n.`email` NOT IN (
 							SELECT cus.`email`
 							FROM `'._DB_PREFIX_.'customer` cus
@@ -448,11 +436,15 @@ class Sarbacanedesktop extends Module
 				FROM `'._DB_PREFIX_.'sarbacanedesktop` s
 				WHERE s.`list_type` = \'C\'
 				AND s.`id_shop` = \''.pSql($id_shop).'\'
-				AND s.`id_sd` = \''.pSql($id_sd).'\'
-				AND s.`customer_data` = CONCAT(t.`lastname`, \'_\', t.`firstname`, t.`optin`)';
+				AND s.`id_sd` = \''.pSql($id_sd).'\'';
 				if ($add_customer_data)
 					$rq_sql .= '
-					AND s.`orders_data` = CONCAT(t.`amount_min_order`, t.`amount_max_order`, t.`nb_orders`, t.`amount_all_orders`)';
+					AND s.`customer_data` = CONCAT(
+						t.`lastname`, \'_\', t.`firstname`, t.`optin`, t.`amount_min_order`, t.`amount_max_order`, t.`nb_orders`, t.`amount_all_orders`
+					)';
+				else
+					$rq_sql .= '
+					AND s.`customer_data` = CONCAT(t.`lastname`, \'_\', t.`firstname`, t.`optin`)';
 			$rq_sql .= '
 			)
 			'.$rq_sql_limit;
@@ -481,15 +473,13 @@ class Sarbacanedesktop extends Module
 			}
 			$content .= ';S'."\n";
 			$customer_data = $r['lastname'].'_'.$r['firstname'];
-			$orders_data = '';
 			if ($list_type == 'C')
 			{
 				$customer_data .= $r['optin'];
 				if ($add_customer_data)
-					$orders_data = $r['amount_min_order'].$r['amount_max_order'].$r['nb_orders'].$r['amount_all_orders'];
+					$customer_data .= $r['amount_min_order'].$r['amount_max_order'].$r['nb_orders'].$r['amount_all_orders'];
 			}
-			$insert_values = '\''.pSql($r['email']).'\', \''.pSql($list_type).'\', \''.pSql($id_shop).'\', \''.pSql($id_sd).'\', \'';
-			$insert_values .= pSql($customer_data).'\', \''.pSql($orders_data).'\'';
+			$insert_values = '\''.pSql($r['email']).'\', \''.pSql($list_type).'\', \''.pSql($id_shop).'\', \''.pSql($id_sd).'\', \''.pSql($customer_data).'\'';
 			$rq_sql_insert .= ' ('.$insert_values.'),';
 			if ($i == 500)
 			{
@@ -500,6 +490,8 @@ class Sarbacanedesktop extends Module
 			}
 			$i++;
 		}
+		if ($type_action == 'is_updated')
+			return 0;
 		if ($rq_sql_insert != '')
 			$this->addedNewSubscribers($content, $rq_sql_insert);
 	}
@@ -509,11 +501,10 @@ class Sarbacanedesktop extends Module
 		echo $content;
 		$rq_sql_insert = Tools::substr($rq_sql_insert, 0, -1);
 		$rq_sql = '
-		INSERT INTO `'._DB_PREFIX_.'sarbacanedesktop` (`email`, `list_type`, `id_shop`, `id_sd`, `customer_data`, `orders_data`) VALUES
+		INSERT INTO `'._DB_PREFIX_.'sarbacanedesktop` (`email`, `list_type`, `id_shop`, `id_sd`, `customer_data`) VALUES
 		'.$rq_sql_insert.'
 		ON DUPLICATE KEY UPDATE
-		`customer_data` = VALUES(`customer_data`),
-		`orders_data` = VALUES(`orders_data`)';
+		`customer_data` = VALUES(`customer_data`)';
 		Db::getInstance()->execute($rq_sql);
 	}
 
@@ -532,7 +523,9 @@ class Sarbacanedesktop extends Module
 			WHERE s.`email` NOT IN (
 				SELECT c.`email`
 				FROM `'._DB_PREFIX_.'customer` c
-				WHERE c.'.$shop_customer_selection.' AND c.`deleted` = 0 AND c.`newsletter` = 1
+				WHERE c.'.$shop_customer_selection.'
+				AND c.`deleted` = 0
+				AND c.`newsletter` = 1
 			)';
 			if ($check_if_newsletter_module)
 				$rq_sql .= '
@@ -556,7 +549,8 @@ class Sarbacanedesktop extends Module
 			WHERE s.`email` NOT IN (
 				SELECT c.`email`
 				FROM `'._DB_PREFIX_.'customer` c
-				WHERE c.'.$shop_customer_selection.' AND c.`deleted` = 0
+				WHERE c.'.$shop_customer_selection.'
+				AND c.`deleted` = 0
 			)
 			AND s.`list_type` = \'C\'
 			AND s.`id_shop` = \''.pSql($id_shop).'\'
@@ -591,6 +585,8 @@ class Sarbacanedesktop extends Module
 			}
 			$i++;
 		}
+		if ($type_action == 'is_updated')
+			return 0;
 		if ($rq_sql_delete != '')
 			$this->deletedNewUnsubscribers($content, $rq_sql_delete, $list_type, $id_shop, $id_sd);
 	}
@@ -753,11 +749,7 @@ class Sarbacanedesktop extends Module
 		{
 			$id_shops = Tools::getValue('id_shop');
 			if (is_array($id_shops))
-			{
-				foreach ($id_shops as $id_shop)
-					$shops .= $id_shop.',';
-				$shops = Tools::substr($shops, 0, Tools::strlen($shops) - 1);
-			}
+				$shops = implode(',', $id_shops);
 		}
 		$old_sd_list_array = $this->getListConfiguration('array');
 		$rq_sql = '
@@ -784,12 +776,6 @@ class Sarbacanedesktop extends Module
 
 	public function getContent()
 	{
-		if (!Module::isInstalled($this->name) || !$this->checkPrestashopVersion())
-			return '';
-		if (!isset($this->context->employee))
-			return '';
-		if (!$this->context->employee->isLoggedBack())
-			return '';
 		$general_configuration = $this->getConfiguration('nb_configured');
 		if ($general_configuration == 1)
 			$displayed_step = 2;
