@@ -6,7 +6,7 @@ $_MODULE['<{sarbacanedesktop}prestashop>sarbacanedesktop_1c5e38b58f59e25968d04f2
 $_MODULE['<{sarbacanedesktop}prestashop>sarbacanedesktop_b9d73c15401ec22e0bc1499124d418cd'] = 'Sincronice las listas de contactos con los datos de PrestaShop.';
 $_MODULE['<{sarbacanedesktop}prestashop>sarbacanedesktop_e0cff7f32e63e9b6317a8e13c8824afd'] = 'mailify';
 $_MODULE['<{sarbacanedesktop}prestashop>sarbacanedesktop_0e2aa06748e4809dbe978a9d38acb269'] = 'Gestiona tus newsletters y emailing con facilidad';
-$_MODULE['<{sarbacanedesktop}prestashop>sarbacanedesktop_fdeae26665fc4b3a0266f4146f6e6742'] = '//www.youtube.com/embed/ADeyEs4FdGY';
+$_MODULE['<{sarbacanedesktop}prestashop>sarbacanedesktop_8bc680ffd292e68e1e2299cb7bd1c9e2'] = 'https://www.youtube.com/embed/ADeyEs4FdGY';
 $_MODULE['<{sarbacanedesktop}prestashop>sarbacanedesktop_a16a6a1971d5eda3675356f22c51dda7'] = 'Este módulo Prestashop permite sincronizar los clientes, cuentas y altas en la newsletter de tu tienda online con la aplicación de mailing Mailify, y disfrutar de innumerables características...';
 $_MODULE['<{sarbacanedesktop}prestashop>sarbacanedesktop_c707b470dd0a030e5091d208388c32ad'] = 'Iniciar configuración';
 $_MODULE['<{sarbacanedesktop}prestashop>sarbacanedesktop_28e43fd25ca7b7c0032a4d75ed38be08'] = 'Datos de la tienda sincronizados';

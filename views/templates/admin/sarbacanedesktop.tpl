@@ -32,7 +32,7 @@
 	<div class="sd_title_separator_page"></div>
 	<div class="sd_video_config_container">
 		<div class="sd_video_container">
-			<iframe width="565" height="315" src="{l s='//www.youtube.com/embed/eLMy2tSSYgE' mod='sarbacanedesktop'}?rel=0&showinfo=0" frameborder="0" allowfullscreen></iframe>
+			<iframe width="565" height="315" src="{l s='https://www.youtube.com/embed/eLMy2tSSYgE' mod='sarbacanedesktop'}?rel=0&showinfo=0" frameborder="0" allowfullscreen></iframe>
 		</div>
 		<div class="sd_config_container">
 			<p>{l s='This Prestashop module enables you to synchronize clients and accounts that have subscribed to your newsletter from your shop online using Sarbacane Desktop\'s email marketing software.' mod='sarbacanedesktop'}</p>
