@@ -31,7 +31,7 @@ class Sarbacanedesktop extends Module
 
 	public function __construct()
 	{
-		$this->version = '1.0';
+		$this->version = '1.0.0';
 		$this->name = 'sarbacanedesktop';
 		$this->tab = 'emailing';
 		$this->author = 'Sarbacane Software';
@@ -61,16 +61,13 @@ class Sarbacanedesktop extends Module
 		$result4  = Db::getInstance()->execute('
 		CREATE TABLE `'._DB_PREFIX_.'sarbacanedesktop_users` (
 			`id_sd` int(20) unsigned NOT NULL AUTO_INCREMENT,
-			`sd_type` varchar(20) NOT NULL,
 			`sd_value` varchar(200) NOT NULL,
 			PRIMARY KEY(`id_sd`)
 		) ENGINE='._MYSQL_ENGINE_.' DEFAULT CHARSET=utf8');
-		$result5 = Db::getInstance()->execute('
-		INSERT INTO `'._DB_PREFIX_.'sarbacanedesktop_users` (`sd_type`, `sd_value`) VALUES
-		(\'sd_token\', \'\'),
-		(\'sd_list\', \'\'),
-		(\'sd_is_user\', \'\')');
-		if (!$result1 || !$result2 || !$result3 || !$result4 || !$result5)
+		$result5 = Configuration::updateGlobalValue('SARBACANEDESKTOP_TOKEN', '');
+		$result6 = Configuration::updateGlobalValue('SARBACANEDESKTOP_LIST', '');
+		$result7 = Configuration::updateGlobalValue('SARBACANEDESKTOP_IS_USER', '');
+		if (!$result1 || !$result2 || !$result3 || !$result4 || !$result5 || !$result6 || !$result7)
 			return false;
 		if (!parent::install())
 			return false;
@@ -80,6 +77,10 @@ class Sarbacanedesktop extends Module
 	public function uninstall()
 	{
 		if (!parent::uninstall())
+			return false;
+		if (!Configuration::deleteByName('SARBACANEDESKTOP_TOKEN')
+		|| !Configuration::deleteByName('SARBACANEDESKTOP_LIST')
+		|| !Configuration::deleteByName('SARBACANEDESKTOP_IS_USER'))
 			return false;
 		Db::getInstance()->execute('DROP TABLE IF EXISTS `'._DB_PREFIX_.'sarbacanedesktop`');
 		Db::getInstance()->execute('DROP TABLE IF EXISTS `'._DB_PREFIX_.'sarbacanedesktop_users`');
@@ -101,9 +102,10 @@ class Sarbacanedesktop extends Module
 						$id_sd = $this->saveSdid($sdid);
 					if ($id_sd != '')
 					{
-						$configuration = $this->getConfiguration('all');
 						$sd_list_array = $this->getListConfiguration('array');
-						if ($configuration['sd_token'] != '' && $configuration['sd_list'] != '' && is_array($sd_list_array) && count($sd_list_array) > 0)
+						if (Configuration::getGlobalValue('SARBACANEDESKTOP_TOKEN') != ''
+						&& Configuration::getGlobalValue('SARBACANEDESKTOP_LIST') != ''
+						&& is_array($sd_list_array) && count($sd_list_array) > 0)
 						{
 							header('Content-type: text/html; charset=utf-8');
 							ini_set('max_execution_time', 1200);
@@ -144,7 +146,7 @@ class Sarbacanedesktop extends Module
 
 	private function getToken()
 	{
-		$str = $this->getConfiguration('sd_token');
+		$str = Configuration::getGlobalValue('SARBACANEDESKTOP_TOKEN');
 		$str = $str.Tools::substr(Tools::encrypt('SecurityTokenForModule'), 0, 11).$str;
 		$str = Tools::encrypt($str);
 		return $str;
@@ -216,7 +218,7 @@ class Sarbacanedesktop extends Module
 				}
 			}
 		}
-		echo $content;
+		return $content;
 	}
 
 	private function listIsResetted($id_shop, $list_type, $id_sd)
@@ -626,28 +628,9 @@ class Sarbacanedesktop extends Module
 
 	private function getConfiguration($return = 'nb_configured')
 	{
-		$rq_sql = '
-		SELECT *
-		FROM `'._DB_PREFIX_.'sarbacanedesktop_users`
-		WHERE `sd_type` = \'sd_token\'
-		OR `sd_type` = \'sd_list\'
-		OR `sd_type` = \'sd_is_user\'';
-		$rq = Db::getInstance()->executeS($rq_sql);
-		$sd_token = '';
-		$sd_list = '';
-		$sd_is_user = '';
-		if (is_array($rq))
-		{
-			foreach ($rq as $r)
-			{
-				if ($r['sd_type'] == 'sd_token')
-					$sd_token = $r['sd_value'];
-				else if ($r['sd_type'] == 'sd_list')
-					$sd_list = $r['sd_value'];
-				else if ($r['sd_type'] == 'sd_is_user')
-					$sd_is_user = $r['sd_value'];
-			}
-		}
+		$sd_token = Configuration::getGlobalValue('SARBACANEDESKTOP_TOKEN');
+		$sd_list = Configuration::getGlobalValue('SARBACANEDESKTOP_LIST');
+		$sd_is_user = Configuration::getGlobalValue('SARBACANEDESKTOP_IS_USER');
 		if ($return == 'sd_token' || $return == 'sd_list' || $return == 'sd_is_user')
 		{
 			if ($return == 'sd_token')
@@ -684,8 +667,7 @@ class Sarbacanedesktop extends Module
 		$rq_sql = '
 		SELECT `id_sd`
 		FROM `'._DB_PREFIX_.'sarbacanedesktop_users`
-		WHERE `sd_type` = \'id_sd\'
-		AND `sd_value` = \''.pSql($sdid).'\'
+		WHERE `sd_value` = \''.pSql($sdid).'\'
 		ORDER BY `id_sd` ASC
 		LIMIT 0, 1';
 		$rq = Db::getInstance()->executeS($rq_sql);
@@ -700,8 +682,8 @@ class Sarbacanedesktop extends Module
 	private function saveSdid($sdid)
 	{
 		$rq_sql = '
-		INSERT INTO `'._DB_PREFIX_.'sarbacanedesktop_users` (`sd_type`, `sd_value`) VALUES
-		(\'id_sd\', \''.pSql($sdid).'\')';
+		INSERT INTO `'._DB_PREFIX_.'sarbacanedesktop_users` (`sd_value`) VALUES
+		(\''.pSql($sdid).'\')';
 		Db::getInstance()->execute($rq_sql);
 		return $this->getSdidIdentifier($sdid);
 	}
@@ -711,10 +693,7 @@ class Sarbacanedesktop extends Module
 		$rq_sql = 'TRUNCATE `'._DB_PREFIX_.'sarbacanedesktop`';
 		Db::getInstance()->execute($rq_sql);
 		$token_parameter = rand(100000, 999999).time();
-		$rq_sql = '
-		UPDATE `'._DB_PREFIX_.'sarbacanedesktop_users`
-		SET `sd_value` = \''.pSql($token_parameter).'\'
-		WHERE `sd_type` = \'sd_token\'';
+		Configuration::updateGlobalValue('SARBACANEDESKTOP_TOKEN', $token_parameter);
 		Db::getInstance()->execute($rq_sql);
 	}
 
@@ -723,11 +702,7 @@ class Sarbacanedesktop extends Module
 		if (Tools::getIsset('sd_is_user'))
 		{
 			$sd_is_user = Tools::getValue('sd_is_user');
-			$rq_sql = '
-			UPDATE `'._DB_PREFIX_.'sarbacanedesktop_users`
-			SET `sd_value` = \''.pSql($sd_is_user).'\'
-			WHERE `sd_type` = \'sd_is_user\'';
-			Db::getInstance()->execute($rq_sql);
+			Configuration::updateGlobalValue('SARBACANEDESKTOP_IS_USER', $sd_is_user);
 		}
 	}
 
@@ -745,7 +720,7 @@ class Sarbacanedesktop extends Module
 
 	private function getListConfiguration($return = 'string')
 	{
-		$sd_list = $this->getConfiguration('sd_list');
+		$sd_list = Configuration::getGlobalValue('SARBACANEDESKTOP_LIST');
 		if ($return == 'string')
 			return $sd_list;
 		else
@@ -771,11 +746,7 @@ class Sarbacanedesktop extends Module
 				$shops = implode(',', $id_shops);
 		}
 		$old_sd_list_array = $this->getListConfiguration('array');
-		$rq_sql = '
-		UPDATE `'._DB_PREFIX_.'sarbacanedesktop_users`
-		SET `sd_value` = \''.pSql($shops).'\'
-		WHERE `sd_type` = \'sd_list\'';
-		Db::getInstance()->execute($rq_sql);
+		Configuration::updateGlobalValue('SARBACANEDESKTOP_LIST', $shops);
 		$sd_list_array = $this->getListConfiguration('array');
 		foreach ($sd_list_array as $sd_list)
 		{
@@ -795,13 +766,6 @@ class Sarbacanedesktop extends Module
 
 	public function getContent()
 	{
-		$general_configuration = $this->getConfiguration('nb_configured');
-		if ($general_configuration == 1)
-			$displayed_step = 2;
-		else if ($general_configuration == 2 || $general_configuration == 3)
-			$displayed_step = 3;
-		else
-			$displayed_step = 1;
 		if (Tools::isSubmit('submit_is_user') || Tools::isSubmit('submit_configuration') || Tools::isSubmit('submit_parameter_key'))
 		{
 			if (Tools::getIsset('sd_form_key'))
@@ -809,22 +773,24 @@ class Sarbacanedesktop extends Module
 				if (Tools::getValue('sd_form_key') == $this->getSdFormKey())
 				{
 					if (Tools::isSubmit('submit_is_user'))
-					{
 						$this->saveSdIsUser();
-						$displayed_step = 2;
-					}
 					else if (Tools::isSubmit('submit_configuration'))
 					{
 						$this->saveListConfiguration();
-						if ($this->getConfiguration('sd_token') == '')
+						if (Configuration::getGlobalValue('SARBACANEDESKTOP_TOKEN') == '')
 							$this->saveTokenParameterConfiguration();
-						$displayed_step = 3;
 					}
 					else if (Tools::isSubmit('submit_parameter_key'))
 						$this->saveTokenParameterConfiguration();
 				}
 			}
 		}
+		$general_configuration = $this->getConfiguration('nb_configured');
+		$displayed_step = 1;
+		if ($general_configuration == 1)
+			$displayed_step = 2;
+		else if ($general_configuration == 2 || $general_configuration == 3)
+			$displayed_step = 3;
 		$sd_submit_url = 'index.php?controller='.Tools::safeOutput(Tools::getValue('controller')).'&token='.Tools::safeOutput(Tools::getValue('token'));
 		$sd_submit_url .= '&configure='.$this->name.'&tab_module='.$this->tab.'&module_name='.$this->name.'#sd_step';
 		$this->context->smarty->assign(array(
@@ -833,12 +799,12 @@ class Sarbacanedesktop extends Module
 			'key_for_synchronisation' => $this->getKeyForSynchronisation(),
 			'list_configuration' => $this->getListConfiguration('array'),
 			'general_configuration' => $general_configuration,
-			'sd_is_user' => $this->getConfiguration('sd_is_user'),
+			'sd_is_user' => Configuration::getGlobalValue('SARBACANEDESKTOP_IS_USER'),
 			'displayed_step' => $displayed_step,
 			'stores_array' => $this->getStoresArray(),
 			'website_url' => Tools::getHttpHost(true).__PS_BASE_URI__,
-			'css_url' => $this->_path.'css/sarbacanedesktop.css',
-			'js_url' => $this->_path.'js/sarbacanedesktop.js'
+			'css_url' => $this->_path.'views/css/sarbacanedesktop.css',
+			'js_url' => $this->_path.'views/js/sarbacanedesktop.js'
 		));
 		return $this->context->smarty->fetch($this->local_path.'views/templates/admin/sarbacanedesktop.tpl');
 	}
