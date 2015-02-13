@@ -2,18 +2,18 @@
 
 global $_MODULE;
 $_MODULE = array();
-$_MODULE['<{sarbacanedesktop}prestashop>sarbacanedesktop_1c5e38b58f59e25968d04f213b72c327'] = 'Listes de contacts - Sarbacane Desktop';
+$_MODULE['<{sarbacanedesktop}prestashop>sarbacanedesktop_5f9baf78fb9d0c046a1dab96735837c4'] = 'Sarbacane Desktop';
 $_MODULE['<{sarbacanedesktop}prestashop>sarbacanedesktop_b9d73c15401ec22e0bc1499124d418cd'] = 'Synchronisez des listes de contacts avec les données issues de PrestaShop.';
 $_MODULE['<{sarbacanedesktop}prestashop>sarbacanedesktop_e0cff7f32e63e9b6317a8e13c8824afd'] = 'sarbacane';
-$_MODULE['<{sarbacanedesktop}prestashop>sarbacanedesktop_0e2aa06748e4809dbe978a9d38acb269'] = 'Gérer vos newsletters et emailing en toute simplicité';
+$_MODULE['<{sarbacanedesktop}prestashop>sarbacanedesktop_0e2aa06748e4809dbe978a9d38acb269'] = 'Gérez vos newsletters et emailing en toute simplicité';
 $_MODULE['<{sarbacanedesktop}prestashop>sarbacanedesktop_8bc680ffd292e68e1e2299cb7bd1c9e2'] = 'https://www.youtube.com/embed/eLMy2tSSYgE';
-$_MODULE['<{sarbacanedesktop}prestashop>sarbacanedesktop_a16a6a1971d5eda3675356f22c51dda7'] = 'Ce module Prestashop vous permet de synchroniser les clients, comptes, inscrits à la newsletter de votre boutique avec le logiciel emailing Sarbacane Desktop, et de profiter de ces innombrables fonctionnalités...';
+$_MODULE['<{sarbacanedesktop}prestashop>sarbacanedesktop_a16a6a1971d5eda3675356f22c51dda7'] = 'Ce module Prestashop vous permet de synchroniser les clients, comptes, inscrits à la newsletter de votre boutique avec le logiciel emailing Sarbacane Desktop, et de profiter de ses innombrables fonctionnalités...';
 $_MODULE['<{sarbacanedesktop}prestashop>sarbacanedesktop_c707b470dd0a030e5091d208388c32ad'] = 'Démarrer la configuration';
 $_MODULE['<{sarbacanedesktop}prestashop>sarbacanedesktop_28e43fd25ca7b7c0032a4d75ed38be08'] = 'Données boutique synchronisées';
 $_MODULE['<{sarbacanedesktop}prestashop>sarbacanedesktop_3d6a9428c091d22a7f05c1d18b0d6def'] = 'Editeur graphique responsive';
 $_MODULE['<{sarbacanedesktop}prestashop>sarbacanedesktop_9e971ad51fc8f2b7c76e66c3763a297d'] = 'Statistiques détaillées';
 $_MODULE['<{sarbacanedesktop}prestashop>sarbacanedesktop_4a70fb18ce269856a738cc498183646a'] = 'Délivrabilité optimale';
-$_MODULE['<{sarbacanedesktop}prestashop>sarbacanedesktop_e92b67bf568e3ede33b31be21f758f00'] = 'Synchroniser et gérer toutes les listes d\'emails de votre boutique Prestashop';
+$_MODULE['<{sarbacanedesktop}prestashop>sarbacanedesktop_e92b67bf568e3ede33b31be21f758f00'] = 'Synchronisez et gérez toutes les listes d\'emails de votre boutique Prestashop';
 $_MODULE['<{sarbacanedesktop}prestashop>sarbacanedesktop_bef80c65afc95aa884f422d0a27c2864'] = 'NOUVEAU ! Créez de superbes newsletters responsive grâce à l\'EmailBuilder';
 $_MODULE['<{sarbacanedesktop}prestashop>sarbacanedesktop_374b1881f95b33393e1d3514da18d5c7'] = 'Géolocalisation, ouvertures, temps d\'ouvertures, clics, désabonnements, ...';
 $_MODULE['<{sarbacanedesktop}prestashop>sarbacanedesktop_25d13bec1bae006ca552f11d0e8fd8ee'] = 'Délivrabilité optimisée grâce à notre plateforme de routage professionnelle reconnue';

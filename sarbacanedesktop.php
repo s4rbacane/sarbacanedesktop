@@ -38,7 +38,7 @@ class Sarbacanedesktop extends Module
 		$this->need_instance = 1;
 		$this->bootstrap = true;
 		parent::__construct();
-		$this->displayName = $this->l('Contact lists - Sarbacane Desktop');
+		$this->displayName = $this->l('Sarbacane Desktop');
 		$this->description = $this->l('Synchronize contact lists with data from PrestaShop.');
 		$this->ps_versions_compliancy = array('min' => '1.5.0.9', 'max' => _PS_VERSION_);
 	}
@@ -56,13 +56,14 @@ class Sarbacanedesktop extends Module
 			`id_shop` varchar(20) NOT NULL,
 			`id_sd_id` varchar(20) NOT NULL,
 			`customer_data` varchar(200) NOT NULL,
-			PRIMARY KEY(`email`, `list_type`, `id_shop`, `id_sd_id`)
+			PRIMARY KEY (`email`, `list_type`, `id_shop`, `id_sd_id`),
+			INDEX `sd` (`list_type`, `id_shop`, `id_sd_id`, `customer_data`)
 		) ENGINE='._MYSQL_ENGINE_.' DEFAULT CHARSET=utf8');
 		$result4  = Db::getInstance()->execute('
 		CREATE TABLE `'._DB_PREFIX_.'sarbacanedesktop_users` (
 			`id_sd_id` int(20) unsigned NOT NULL AUTO_INCREMENT,
 			`sd_id` varchar(200) NOT NULL,
-			PRIMARY KEY(`id_sd_id`)
+			PRIMARY KEY (`id_sd_id`)
 		) ENGINE='._MYSQL_ENGINE_.' DEFAULT CHARSET=utf8');
 		$result5 = Configuration::updateGlobalValue('SARBACANEDESKTOP_TOKEN', '');
 		$result6 = Configuration::updateGlobalValue('SARBACANEDESKTOP_LIST', '');
@@ -691,6 +692,8 @@ class Sarbacanedesktop extends Module
 	private function saveTokenParameterConfiguration()
 	{
 		$rq_sql = 'TRUNCATE `'._DB_PREFIX_.'sarbacanedesktop`';
+		Db::getInstance()->execute($rq_sql);
+		$rq_sql = 'TRUNCATE `'._DB_PREFIX_.'sarbacanedesktop_users`';
 		Db::getInstance()->execute($rq_sql);
 		$token_parameter = rand(100000, 999999).time();
 		Configuration::updateGlobalValue('SARBACANEDESKTOP_TOKEN', $token_parameter);
