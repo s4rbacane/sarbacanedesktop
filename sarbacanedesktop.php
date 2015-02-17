@@ -39,7 +39,9 @@ class Sarbacanedesktop extends Module
 		$this->bootstrap = true;
 		parent::__construct();
 		$this->displayName = $this->l('Sarbacane Desktop');
-		$this->description = $this->l('Synchronize contact lists with data from PrestaShop.');
+		$this->description = $this->l('Automatically synchronize clients,');
+		$this->description .= ' '.$this->l('accounts and subscribers to your e-shop newsletter with Sarbacane Desktop\'s email marketing software;');
+		$this->description .= ' '.$this->l('create and send stunning newsletters and email marketing campaigns.');
 		$this->ps_versions_compliancy = array('min' => '1.5.0.9', 'max' => _PS_VERSION_);
 	}
 
@@ -49,7 +51,7 @@ class Sarbacanedesktop extends Module
 			return false;
 		$result1 = Db::getInstance()->execute('DROP TABLE IF EXISTS `'._DB_PREFIX_.'sarbacanedesktop`');
 		$result2 = Db::getInstance()->execute('DROP TABLE IF EXISTS `'._DB_PREFIX_.'sarbacanedesktop_users`');
-		$result3  = Db::getInstance()->execute('
+		$result3 = Db::getInstance()->execute('
 		CREATE TABLE `'._DB_PREFIX_.'sarbacanedesktop` (
 			`email` varchar(150) NOT NULL,
 			`list_type` varchar(20) NOT NULL,
@@ -59,7 +61,7 @@ class Sarbacanedesktop extends Module
 			PRIMARY KEY (`email`, `list_type`, `id_shop`, `id_sd_id`),
 			INDEX `sd` (`list_type`, `id_shop`, `id_sd_id`, `customer_data`)
 		) ENGINE='._MYSQL_ENGINE_.' DEFAULT CHARSET=utf8');
-		$result4  = Db::getInstance()->execute('
+		$result4 = Db::getInstance()->execute('
 		CREATE TABLE `'._DB_PREFIX_.'sarbacanedesktop_users` (
 			`id_sd_id` int(20) unsigned NOT NULL AUTO_INCREMENT,
 			`sd_id` varchar(200) NOT NULL,

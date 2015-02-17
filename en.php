@@ -3,7 +3,9 @@
 global $_MODULE;
 $_MODULE = array();
 $_MODULE['<{sarbacanedesktop}prestashop>sarbacanedesktop_5f9baf78fb9d0c046a1dab96735837c4'] = 'Mailify';
-$_MODULE['<{sarbacanedesktop}prestashop>sarbacanedesktop_b9d73c15401ec22e0bc1499124d418cd'] = 'Synchronize contact lists with data from PrestaShop.';
+$_MODULE['<{sarbacanedesktop}prestashop>sarbacanedesktop_2a7d5a84ba80a6fa8d71654c62ca4783'] = 'Automatically synchronize clients,';
+$_MODULE['<{sarbacanedesktop}prestashop>sarbacanedesktop_a2efb33c34ac546dcfcf6587632c328e'] = 'accounts and subscribers to your e-shop newsletter with Mailify\'s email marketing software;';
+$_MODULE['<{sarbacanedesktop}prestashop>sarbacanedesktop_243646bdd4e7d149eb781823f0217174'] = 'create and send stunning newsletters and email marketing campaigns.';
 $_MODULE['<{sarbacanedesktop}prestashop>sarbacanedesktop_e0cff7f32e63e9b6317a8e13c8824afd'] = 'mailify';
 $_MODULE['<{sarbacanedesktop}prestashop>sarbacanedesktop_0e2aa06748e4809dbe978a9d38acb269'] = 'It\'s easy to manage your newsletter and email campaigns';
 $_MODULE['<{sarbacanedesktop}prestashop>sarbacanedesktop_8bc680ffd292e68e1e2299cb7bd1c9e2'] = 'https://www.youtube.com/embed/gUGRbfXOJIk';
@@ -30,7 +32,7 @@ $_MODULE['<{sarbacanedesktop}prestashop>sarbacanedesktop_a4157e38b152bc01311a845
 $_MODULE['<{sarbacanedesktop}prestashop>sarbacanedesktop_d0398e90769ea6ed2823a3857bcc19ea'] = 'Tel:';
 $_MODULE['<{sarbacanedesktop}prestashop>sarbacanedesktop_98d659d70a4c9f4cd036181368d02669'] = '(646)-844-0983';
 $_MODULE['<{sarbacanedesktop}prestashop>sarbacanedesktop_e5cb8489f57db7c15eed3258e48cd5f3'] = 'Website:';
-$_MODULE['<{sarbacanedesktop}prestashop>sarbacanedesktop_3eb81d1197afd992226495ecf0d501fc'] = 'https://static.mailify.com/ws/soft-redirect.asp?key=heXmrxBEUO&com=PrestaShopInfo&lng=EN';
+$_MODULE['<{sarbacanedesktop}prestashop>sarbacanedesktop_6cf16177008f4581870380bb4a5618c8'] = 'http://www.mailify.com/?lng=EN&utm_source=module-prestashop&utm_medium=plugin&utm_content=lien-sarbacane&utm_campaign=prestashop';
 $_MODULE['<{sarbacanedesktop}prestashop>sarbacanedesktop_74b359e828dfd9881249ed124cb213d1'] = 'http://www.mailify.com';
 $_MODULE['<{sarbacanedesktop}prestashop>sarbacanedesktop_0c2c964814f9e842054873c652e3939b'] = 'How to set up the module?';
 $_MODULE['<{sarbacanedesktop}prestashop>sarbacanedesktop_9e9aeca013335a15f9a742bb3a0eb328'] = 'Do you already have a Mailify account?';
@@ -51,6 +53,7 @@ $_MODULE['<{sarbacanedesktop}prestashop>sarbacanedesktop_53380f8ae68bad06718e11b
 $_MODULE['<{sarbacanedesktop}prestashop>sarbacanedesktop_ac45efcee17c9dda778e8e580b5ed6e6'] = '- Amount of the most expensive order';
 $_MODULE['<{sarbacanedesktop}prestashop>sarbacanedesktop_e553f43e90bc7b652d110876505ca3d9'] = '- Average amount of the orders placed';
 $_MODULE['<{sarbacanedesktop}prestashop>sarbacanedesktop_dd1f775e443ff3b9a89270713580a51b'] = 'Previous';
+$_MODULE['<{sarbacanedesktop}prestashop>sarbacanedesktop_3eb81d1197afd992226495ecf0d501fc'] = 'https://static.mailify.com/ws/soft-redirect.asp?key=heXmrxBEUO&com=PrestaShopInfo&lng=EN';
 $_MODULE['<{sarbacanedesktop}prestashop>sarbacanedesktop_5293c124179e10cadb2a3f8462297e09'] = 'Download and install Mailify';
 $_MODULE['<{sarbacanedesktop}prestashop>sarbacanedesktop_30fa0cd0bdc06298169b6351c220cec5'] = 'Create your free account';
 $_MODULE['<{sarbacanedesktop}prestashop>sarbacanedesktop_8b81d9b67a3da0d912af8a260a3211d3'] = 'Enable the Prestashop extension in our extensions menu, and then fill in the following fields:';
@@ -58,5 +61,5 @@ $_MODULE['<{sarbacanedesktop}prestashop>sarbacanedesktop_02a3a357710cc2a5dfdfb74
 $_MODULE['<{sarbacanedesktop}prestashop>sarbacanedesktop_897356954c2cd3d41b221e3f24f99bba'] = 'Key';
 $_MODULE['<{sarbacanedesktop}prestashop>sarbacanedesktop_d427200bc5f868228c035ae476c211dd'] = 'Generate a new key';
 $_MODULE['<{sarbacanedesktop}prestashop>sarbacanedesktop_43340e6cc4e88197d57f8d6d5ea50a46'] = 'Read more';
-$_MODULE['<{sarbacanedesktop}prestashop>sarbacanedesktop_93958f3f9ada6479986fbb5c39e313ad'] = 'https://static.mailify.com/ws/soft-redirect.asp?key=myVqfdFZAQ&com=aide-prestashop&lng=EN';
+$_MODULE['<{sarbacanedesktop}prestashop>sarbacanedesktop_d38dd3abeddbc0dff1bf9f3066687e06'] = 'http://www.mailify.com/faq/extensions/configuration-prestashop/?lng=EN&utm_source=module-prestashop&utm_medium=plugin&utm_content=lien-sarbacane&utm_campaign=prestashop';
 $_MODULE['<{sarbacanedesktop}prestashop>sarbacanedesktop_76f0dee71a107dc9971d8607f7d1df72'] = 'in the help section online';

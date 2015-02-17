@@ -3,7 +3,9 @@
 global $_MODULE;
 $_MODULE = array();
 $_MODULE['<{sarbacanedesktop}prestashop>sarbacanedesktop_5f9baf78fb9d0c046a1dab96735837c4'] = 'Sarbacane Desktop';
-$_MODULE['<{sarbacanedesktop}prestashop>sarbacanedesktop_b9d73c15401ec22e0bc1499124d418cd'] = 'Synchronisez des listes de contacts avec les données issues de PrestaShop.';
+$_MODULE['<{sarbacanedesktop}prestashop>sarbacanedesktop_2a7d5a84ba80a6fa8d71654c62ca4783'] = 'Synchronisez automatiquement les clients,';
+$_MODULE['<{sarbacanedesktop}prestashop>sarbacanedesktop_a2efb33c34ac546dcfcf6587632c328e'] = 'comptes, inscrits à la newsletter de votre boutique avec le logiciel emailing Sarbacane Desktop,';
+$_MODULE['<{sarbacanedesktop}prestashop>sarbacanedesktop_243646bdd4e7d149eb781823f0217174'] = 'pour créer et envoyer de superbes newsletters et campagnes d’email marketing.';
 $_MODULE['<{sarbacanedesktop}prestashop>sarbacanedesktop_e0cff7f32e63e9b6317a8e13c8824afd'] = 'sarbacane';
 $_MODULE['<{sarbacanedesktop}prestashop>sarbacanedesktop_0e2aa06748e4809dbe978a9d38acb269'] = 'Gérez vos newsletters et emailing en toute simplicité';
 $_MODULE['<{sarbacanedesktop}prestashop>sarbacanedesktop_8bc680ffd292e68e1e2299cb7bd1c9e2'] = 'https://www.youtube.com/embed/eLMy2tSSYgE';
@@ -30,7 +32,7 @@ $_MODULE['<{sarbacanedesktop}prestashop>sarbacanedesktop_a4157e38b152bc01311a845
 $_MODULE['<{sarbacanedesktop}prestashop>sarbacanedesktop_d0398e90769ea6ed2823a3857bcc19ea'] = 'Tél :';
 $_MODULE['<{sarbacanedesktop}prestashop>sarbacanedesktop_98d659d70a4c9f4cd036181368d02669'] = '+33(0) 328 328 040';
 $_MODULE['<{sarbacanedesktop}prestashop>sarbacanedesktop_e5cb8489f57db7c15eed3258e48cd5f3'] = 'Site :';
-$_MODULE['<{sarbacanedesktop}prestashop>sarbacanedesktop_3eb81d1197afd992226495ecf0d501fc'] = 'https://www.sarbacane.com/ws/soft-redirect.asp?key=heXmrxBEUO&com=PrestaShopInfo';
+$_MODULE['<{sarbacanedesktop}prestashop>sarbacanedesktop_6cf16177008f4581870380bb4a5618c8'] = 'http://www.sarbacane.com/?utm_source=module-prestashop&utm_medium=plugin&utm_content=lien-sarbacane&utm_campaign=prestashop';
 $_MODULE['<{sarbacanedesktop}prestashop>sarbacanedesktop_74b359e828dfd9881249ed124cb213d1'] = 'http://www.sarbacane.com';
 $_MODULE['<{sarbacanedesktop}prestashop>sarbacanedesktop_0c2c964814f9e842054873c652e3939b'] = 'Comment configurer le module ?';
 $_MODULE['<{sarbacanedesktop}prestashop>sarbacanedesktop_9e9aeca013335a15f9a742bb3a0eb328'] = 'Disposez-vous déjà de Sarbacane Desktop ?';
@@ -51,6 +53,7 @@ $_MODULE['<{sarbacanedesktop}prestashop>sarbacanedesktop_53380f8ae68bad06718e11b
 $_MODULE['<{sarbacanedesktop}prestashop>sarbacanedesktop_ac45efcee17c9dda778e8e580b5ed6e6'] = '- Montant de la commande la plus élevée';
 $_MODULE['<{sarbacanedesktop}prestashop>sarbacanedesktop_e553f43e90bc7b652d110876505ca3d9'] = '- Montant moyen des commandes';
 $_MODULE['<{sarbacanedesktop}prestashop>sarbacanedesktop_dd1f775e443ff3b9a89270713580a51b'] = 'Précédent';
+$_MODULE['<{sarbacanedesktop}prestashop>sarbacanedesktop_3eb81d1197afd992226495ecf0d501fc'] = 'https://www.sarbacane.com/ws/soft-redirect.asp?key=heXmrxBEUO&com=PrestaShopInfo';
 $_MODULE['<{sarbacanedesktop}prestashop>sarbacanedesktop_5293c124179e10cadb2a3f8462297e09'] = 'Téléchargez et installez Sarbacane';
 $_MODULE['<{sarbacanedesktop}prestashop>sarbacanedesktop_30fa0cd0bdc06298169b6351c220cec5'] = 'Créer gratuitement votre compte';
 $_MODULE['<{sarbacanedesktop}prestashop>sarbacanedesktop_8b81d9b67a3da0d912af8a260a3211d3'] = 'Rendez-vous dans la section \"extensions\" et activez l’extension Prestashop, puis renseignez les éléments suivants :';
@@ -58,5 +61,5 @@ $_MODULE['<{sarbacanedesktop}prestashop>sarbacanedesktop_02a3a357710cc2a5dfdfb74
 $_MODULE['<{sarbacanedesktop}prestashop>sarbacanedesktop_897356954c2cd3d41b221e3f24f99bba'] = 'Clé';
 $_MODULE['<{sarbacanedesktop}prestashop>sarbacanedesktop_d427200bc5f868228c035ae476c211dd'] = 'Générer une nouvelle clé';
 $_MODULE['<{sarbacanedesktop}prestashop>sarbacanedesktop_43340e6cc4e88197d57f8d6d5ea50a46'] = 'Pour plus de détails';
-$_MODULE['<{sarbacanedesktop}prestashop>sarbacanedesktop_93958f3f9ada6479986fbb5c39e313ad'] = 'https://www.sarbacane.com/ws/soft-redirect.asp?key=myVqfdFZAQ&com=aide-prestashop';
+$_MODULE['<{sarbacanedesktop}prestashop>sarbacanedesktop_d38dd3abeddbc0dff1bf9f3066687e06'] = 'http://www.sarbacane.com/faq/extensions/configuration-prestashop/?utm_source=module-prestashop&utm_medium=plugin&utm_content=lien-sarbacane&utm_campaign=prestashop';
 $_MODULE['<{sarbacanedesktop}prestashop>sarbacanedesktop_76f0dee71a107dc9971d8607f7d1df72'] = 'consulter l\'aide en ligne';
