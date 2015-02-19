@@ -26,4 +26,5 @@
 require_once(dirname(__FILE__).'/../../config/config.inc.php');
 require_once(dirname(__FILE__).'/sarbacanedesktop.php');
 $s = new Sarbacanedesktop();
+header('Content-type: text/plain; charset=utf-8');
 echo $s->initSynchronisation();

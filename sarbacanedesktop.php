@@ -110,7 +110,6 @@ class Sarbacanedesktop extends Module
 						&& Configuration::getGlobalValue('SARBACANEDESKTOP_LIST') != ''
 						&& is_array($sd_list_array) && count($sd_list_array) > 0)
 						{
-							header('Content-type: text/html; charset=utf-8');
 							ini_set('max_execution_time', 1200);
 							if (Tools::getIsset('list'))
 							{
