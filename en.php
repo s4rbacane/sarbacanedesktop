@@ -61,5 +61,5 @@ $_MODULE['<{sarbacanedesktop}prestashop>sarbacanedesktop_02a3a357710cc2a5dfdfb74
 $_MODULE['<{sarbacanedesktop}prestashop>sarbacanedesktop_897356954c2cd3d41b221e3f24f99bba'] = 'Key';
 $_MODULE['<{sarbacanedesktop}prestashop>sarbacanedesktop_d427200bc5f868228c035ae476c211dd'] = 'Generate a new key';
 $_MODULE['<{sarbacanedesktop}prestashop>sarbacanedesktop_43340e6cc4e88197d57f8d6d5ea50a46'] = 'Read more';
-$_MODULE['<{sarbacanedesktop}prestashop>sarbacanedesktop_d38dd3abeddbc0dff1bf9f3066687e06'] = 'http://www.mailify.com/faq/extensions/configuration-prestashop/?lng=EN&utm_source=module-prestashop&utm_medium=plugin&utm_content=lien-sarbacane&utm_campaign=prestashop';
+$_MODULE['<{sarbacanedesktop}prestashop>sarbacanedesktop_ec739ffeb2d04cac9ca582554591c1b8'] = 'http://www.mailify.com/faq/extensions/configuration-prestashop/?lng=EN&utm_source=module-prestashop&utm_medium=plugin&utm_content=lien-sarbacane&utm_campaign=prestashop';
 $_MODULE['<{sarbacanedesktop}prestashop>sarbacanedesktop_76f0dee71a107dc9971d8607f7d1df72'] = 'in the help section online';
