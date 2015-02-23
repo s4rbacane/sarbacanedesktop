@@ -31,7 +31,7 @@ class Sarbacanedesktop extends Module
 
 	public function __construct()
 	{
-		$this->version = '1.0.0';
+		$this->version = '1.0.1';
 		$this->name = 'sarbacanedesktop';
 		$this->tab = 'emailing';
 		$this->author = 'Sarbacane Software';
