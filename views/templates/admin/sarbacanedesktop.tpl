@@ -271,7 +271,7 @@
 				<input type="button" onclick="sdDisplayStep(2)" value="{l s='Previous' mod='sarbacanedesktop'}"/>
 			</div>
 			<div class="sd_step3_right">
-				{l s='Read more' mod='sarbacanedesktop'}, <a href="{l s='http://www.sarbacane.com/faq/extensions/configuration-prestashop/?utm_source=module-prestashop&utm_medium=plugin&utm_content=lien-sarbacane&utm_campaign=prestashop' mod='sarbacanedesktop'}" target="_blank">{l s='in the help section online' mod='sarbacanedesktop'}</a>
+				{l s='Read more' mod='sarbacanedesktop'}, <a href="{l s='http://www.sarbacane.com/faq/extensions/configuration-plugin-prestashop/?utm_source=module-prestashop&utm_medium=plugin&utm_content=lien-sarbacane&utm_campaign=prestashop' mod='sarbacanedesktop'}" target="_blank">{l s='in the help section online' mod='sarbacanedesktop'}</a>
 			</div>
 		</div>
 	</div>
