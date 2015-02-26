@@ -31,7 +31,7 @@ class Sarbacanedesktop extends Module
 
 	public function __construct()
 	{
-		$this->version = '1.0.1';
+		$this->version = '1.0.2';
 		$this->name = 'sarbacanedesktop';
 		$this->tab = 'emailing';
 		$this->author = 'Sarbacane Software';
@@ -42,7 +42,7 @@ class Sarbacanedesktop extends Module
 		$this->description = $this->l('Automatically synchronize clients,');
 		$this->description .= ' '.$this->l('accounts and subscribers to your e-shop newsletter with Sarbacane Desktop\'s email marketing software;');
 		$this->description .= ' '.$this->l('create and send stunning newsletters and email marketing campaigns.');
-		$this->ps_versions_compliancy = array('min' => '1.5.0.9', 'max' => _PS_VERSION_);
+		$this->ps_versions_compliancy = array('min' => '1.5.0.9', 'max' => _PS_VERSION_.'.1');
 	}
 
 	public function install()
