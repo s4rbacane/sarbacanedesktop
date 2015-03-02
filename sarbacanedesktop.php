@@ -31,7 +31,7 @@ class Sarbacanedesktop extends Module
 
 	public function __construct()
 	{
-		$this->version = '1.0.2';
+		$this->version = '1.0.3';
 		$this->name = 'sarbacanedesktop';
 		$this->tab = 'emailing';
 		$this->author = 'Sarbacane Software';
@@ -653,11 +653,14 @@ class Sarbacanedesktop extends Module
 			{
 				$nb_configured = 0;
 				if ($sd_token != '')
-					$nb_configured++;
-				if ($sd_list != '')
-					$nb_configured++;
-				if ($sd_is_user != '')
-					$nb_configured++;
+					$nb_configured = 3;
+				else
+				{
+					if ($sd_list != '')
+						$nb_configured++;
+					if ($sd_is_user != '')
+						$nb_configured++;
+				}
 				return $nb_configured;
 			}
 		}
