@@ -2,7 +2,7 @@
 <module>
 	<name>sarbacanedesktop</name>
 	<displayName><![CDATA[Mailify]]></displayName>
-	<version><![CDATA[1.0.3]]></version>
+	<version><![CDATA[1.0.4]]></version>
 	<description><![CDATA[Automatically synchronize clients, accounts and subscribers to your e-shop newsletter with Mailify&#039;s email marketing software; create and send stunning newsletters and email marketing campaigns.]]></description>
 	<author><![CDATA[Sarbacane Software]]></author>
 	<tab><![CDATA[emailing]]></tab>
