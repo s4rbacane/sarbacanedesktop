@@ -100,7 +100,7 @@ class Sarbacanedesktop extends Module
 				if ($sdid != '' && $this->getConfiguration('nb_configured') == 3)
 				{
 					$id_sd_id = $this->getSdidIdentifier($sdid);
-					if ($id_sd_id == '' && !Tools::getIsset('list'))
+					if ($id_sd_id == '' && !Tools::getIsset('list') && !Tools::getIsset('action'))
 						$id_sd_id = $this->saveSdid($sdid);
 					if ($id_sd_id != '')
 					{
