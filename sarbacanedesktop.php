@@ -31,7 +31,7 @@ class Sarbacanedesktop extends Module
 
 	public function __construct()
 	{
-		$this->version = '1.0.3';
+		$this->version = '1.0.4';
 		$this->name = 'sarbacanedesktop';
 		$this->tab = 'emailing';
 		$this->author = 'Sarbacane Software';
@@ -100,7 +100,7 @@ class Sarbacanedesktop extends Module
 				if ($sdid != '' && $this->getConfiguration('nb_configured') == 3)
 				{
 					$id_sd_id = $this->getSdidIdentifier($sdid);
-					if ($id_sd_id == '' && !Tools::getIsset('list'))
+					if ($id_sd_id == '' && !Tools::getIsset('list') && !Tools::getIsset('action'))
 						$id_sd_id = $this->saveSdid($sdid);
 					if ($id_sd_id != '')
 					{
@@ -129,7 +129,12 @@ class Sarbacanedesktop extends Module
 								}
 							}
 							else
-								$content = $this->getFormattedContentShops($id_sd_id);
+							{
+								if (Tools::getIsset('action') && Tools::getValue('action') == 'delete')
+									$this->deleteSdUser($id_sd_id);
+								else
+									$content = $this->getFormattedContentShops($id_sd_id);
+							}
 						}
 					}
 				}
@@ -710,6 +715,18 @@ class Sarbacanedesktop extends Module
 			$sd_is_user = Tools::getValue('sd_is_user');
 			Configuration::updateGlobalValue('SARBACANEDESKTOP_IS_USER', $sd_is_user);
 		}
+	}
+
+	private function deleteSdUser($id_sd_id)
+	{
+		$rq_sql = '
+		DELETE FROM `'._DB_PREFIX_.'sarbacanedesktop`
+		WHERE `id_sd_id` = \''.pSql($id_sd_id).'\'';
+		Db::getInstance()->execute($rq_sql);
+		$rq_sql = '
+		DELETE FROM `'._DB_PREFIX_.'sarbacanedesktop_users`
+		WHERE `id_sd_id` = \''.pSql($id_sd_id).'\'';
+		Db::getInstance()->execute($rq_sql);
 	}
 
 	private function resetList($list_type, $id_shop, $id_sd_id = '')
