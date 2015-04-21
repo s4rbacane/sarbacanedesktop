@@ -244,7 +244,7 @@
 		<div class="sd_step_line"></div>
 		<div class="sd_step3_instruction">
 			{if $sd_is_user == 'no'}
-			<p>1/ <a href="{l s='https://www.sarbacane.com/ws/soft-redirect.asp?key=heXmrxBEUO&com=PrestaShopInfo' mod='sarbacanedesktop'}" target="_blank">{l s='Download and install Sarbacane' mod='sarbacanedesktop'}</a></p>
+			<p>1/ <a href="{l s='https://www.sarbacane.com/telechargement.asp?sbtrack=1&auto=1&prestashop=1' mod='sarbacanedesktop'}" target="_blank">{l s='Download and install Sarbacane' mod='sarbacanedesktop'}</a></p>
 			<p>2/ {l s='Create your free account' mod='sarbacanedesktop'}</p>
 			<p>3/ {l s='Enable the Prestashop extension in our extensions menu, and then fill in the following fields:' mod='sarbacanedesktop'}</p>
 			{else if $sd_is_user == 'yes'}
