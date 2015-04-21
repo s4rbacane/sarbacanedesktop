@@ -55,7 +55,7 @@ $_MODULE['<{sarbacanedesktop}prestashop>sarbacanedesktop_e553f43e90bc7b652d11087
 $_MODULE['<{sarbacanedesktop}prestashop>sarbacanedesktop_dd1f775e443ff3b9a89270713580a51b'] = 'Précédent';
 $_MODULE['<{sarbacanedesktop}prestashop>sarbacanedesktop_3eb81d1197afd992226495ecf0d501fc'] = 'https://www.sarbacane.com/ws/soft-redirect.asp?key=heXmrxBEUO&com=PrestaShopInfo';
 $_MODULE['<{sarbacanedesktop}prestashop>sarbacanedesktop_5293c124179e10cadb2a3f8462297e09'] = 'Téléchargez et installez Sarbacane';
-$_MODULE['<{sarbacanedesktop}prestashop>sarbacanedesktop_30fa0cd0bdc06298169b6351c220cec5'] = 'Créer gratuitement votre compte';
+$_MODULE['<{sarbacanedesktop}prestashop>sarbacanedesktop_30fa0cd0bdc06298169b6351c220cec5'] = 'Créez gratuitement votre compte';
 $_MODULE['<{sarbacanedesktop}prestashop>sarbacanedesktop_8b81d9b67a3da0d912af8a260a3211d3'] = 'Rendez-vous dans la section \"extensions\" et activez l’extension Prestashop, puis renseignez les éléments suivants :';
 $_MODULE['<{sarbacanedesktop}prestashop>sarbacanedesktop_02a3a357710cc2a5dfdfb74ed012fb59'] = 'Url';
 $_MODULE['<{sarbacanedesktop}prestashop>sarbacanedesktop_897356954c2cd3d41b221e3f24f99bba'] = 'Clé';
