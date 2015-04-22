@@ -53,7 +53,7 @@ $_MODULE['<{sarbacanedesktop}prestashop>sarbacanedesktop_53380f8ae68bad06718e11b
 $_MODULE['<{sarbacanedesktop}prestashop>sarbacanedesktop_ac45efcee17c9dda778e8e580b5ed6e6'] = '- Amount of the most expensive order';
 $_MODULE['<{sarbacanedesktop}prestashop>sarbacanedesktop_e553f43e90bc7b652d110876505ca3d9'] = '- Average amount of the orders placed';
 $_MODULE['<{sarbacanedesktop}prestashop>sarbacanedesktop_dd1f775e443ff3b9a89270713580a51b'] = 'Previous';
-$_MODULE['<{sarbacanedesktop}prestashop>sarbacanedesktop_3eb81d1197afd992226495ecf0d501fc'] = 'https://static.mailify.com/ws/soft-redirect.asp?key=heXmrxBEUO&com=PrestaShopInfo&lng=EN';
+$_MODULE['<{sarbacanedesktop}prestashop>sarbacanedesktop_aec40f53f4ff100bbf5f3b415665e372'] = 'https://www.mailify.com/download.asp?sbtrack=1&auto=1&prestashop=1';
 $_MODULE['<{sarbacanedesktop}prestashop>sarbacanedesktop_5293c124179e10cadb2a3f8462297e09'] = 'Download and install Mailify';
 $_MODULE['<{sarbacanedesktop}prestashop>sarbacanedesktop_30fa0cd0bdc06298169b6351c220cec5'] = 'Create your free account';
 $_MODULE['<{sarbacanedesktop}prestashop>sarbacanedesktop_8b81d9b67a3da0d912af8a260a3211d3'] = 'Enable the Prestashop extension in our extensions menu, and then fill in the following fields:';

@@ -53,7 +53,7 @@ $_MODULE['<{sarbacanedesktop}prestashop>sarbacanedesktop_53380f8ae68bad06718e11b
 $_MODULE['<{sarbacanedesktop}prestashop>sarbacanedesktop_ac45efcee17c9dda778e8e580b5ed6e6'] = '- Importe de pedido más alto';
 $_MODULE['<{sarbacanedesktop}prestashop>sarbacanedesktop_e553f43e90bc7b652d110876505ca3d9'] = '- Importe medio de pedidos';
 $_MODULE['<{sarbacanedesktop}prestashop>sarbacanedesktop_dd1f775e443ff3b9a89270713580a51b'] = 'Anterior';
-$_MODULE['<{sarbacanedesktop}prestashop>sarbacanedesktop_3eb81d1197afd992226495ecf0d501fc'] = 'https://static.mailify.com/ws/soft-redirect.asp?key=heXmrxBEUO&com=PrestaShopInfo&lng=ES';
+$_MODULE['<{sarbacanedesktop}prestashop>sarbacanedesktop_aec40f53f4ff100bbf5f3b415665e372'] = 'https://es.mailify.com/descargar-aplicacion-envio-newsletter.asp?sbtrack=1&auto=1&prestashop=1';
 $_MODULE['<{sarbacanedesktop}prestashop>sarbacanedesktop_5293c124179e10cadb2a3f8462297e09'] = 'Descarga e instala Mailify';
 $_MODULE['<{sarbacanedesktop}prestashop>sarbacanedesktop_30fa0cd0bdc06298169b6351c220cec5'] = 'Crea tu cuenta gratis';
 $_MODULE['<{sarbacanedesktop}prestashop>sarbacanedesktop_8b81d9b67a3da0d912af8a260a3211d3'] = 'Ir a la sección de \"extensiones\" y activa la extensión Prestashop y rellene los campos siguientes:';
