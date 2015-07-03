@@ -49,6 +49,7 @@ function upgrade_module_1_0_6($object)
 		');
 	$update4 = Db::getInstance()->execute('
 		ALTER TABLE `'._DB_PREFIX_.'sarbacanedesktop_users`
+		ADD COLUMN `list_id` varchar(50) NULL AFTER `sd_id`,
 		ADD COLUMN `last_call_date` DATETIME NULL AFTER `list_id`;	
 	');
 	return $update1 && $update2 && $update3 && $update4;
