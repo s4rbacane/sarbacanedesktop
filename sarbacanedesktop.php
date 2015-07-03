@@ -478,11 +478,6 @@ class Sarbacanedesktop extends Module
 			if ($last_call_date != null && $last_call_date != '')
 				$rq_sql .= ' AND s.update_date > "'.$last_call_date.'"';
 		}
-		else if ($list_type == 'C')
-		{
-			$rq_sql = '
-			SELECT * FROM '._DB_PREFIX_.'customer WHERE 1=2';
-		}
 		else
 			return;
 		$rq = Db::getInstance()->query($rq_sql);
