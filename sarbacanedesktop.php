@@ -680,7 +680,7 @@ class Sarbacanedesktop extends Module
 	
 	function clearHistory(){
 		$rq_sql = 'DELETE FROM `'._DB_PREFIX_.'sd_updates` WHERE update_date<= (SELECT MIN(last_call_date) FROM `'._DB_PREFIX_.'sarbacanedesktop_users`)';
-		
+		Db::getInstance()->execute($rq_sql);
 	}
 
 }
