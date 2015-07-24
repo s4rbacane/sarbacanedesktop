@@ -31,7 +31,7 @@ class Sarbacanedesktop extends Module
 
 	public function __construct()
 	{
-		$this->version = '1.0.6';
+		$this->version = '1.0.7';
 		$this->name = 'sarbacanedesktop';
 		$this->tab = 'emailing';
 		$this->author = 'Sarbacane Software';
@@ -59,7 +59,6 @@ class Sarbacanedesktop extends Module
 			`last_call_date` DATETIME NULL, 
 			PRIMARY KEY (`id_sd_id`)
 		) ENGINE='._MYSQL_ENGINE_.' DEFAULT CHARSET=utf8');
-
 		$result5 = Db::getInstance()->execute('
 		CREATE TABLE `'._DB_PREFIX_.'sd_updates` (
 		`id` INT(10) UNSIGNED NOT NULL AUTO_INCREMENT,
@@ -68,24 +67,17 @@ class Sarbacanedesktop extends Module
 		`customer_email` VARCHAR(255) NULL DEFAULT NULL COLLATE \'utf8_bin\',
 		`action` VARCHAR(10) NOT NULL COLLATE \'utf8_bin\',
 		PRIMARY KEY (`id`)) COLLATE=\'utf8_bin\' ENGINE='._MYSQL_ENGINE_);
-		$result6 = Db::getInstance()->execute('
-		CREATE TRIGGER sd_userupdate AFTER UPDATE ON '._DB_PREFIX_.'customer
-		FOR EACH ROW BEGIN
-			DELETE FROM '._DB_PREFIX_.'sd_updates WHERE customer_id = NEW.id_customer && customer_email = NEW.email;
-			IF NEW.newsletter = 1 THEN
-				INSERT INTO '._DB_PREFIX_.'sd_updates (id,update_date,customer_id,customer_email,action) VALUES (NULL,NOW(),NEW.id_customer,NEW.email,\'S\');
-			ELSE
-				INSERT INTO '._DB_PREFIX_.'sd_updates (id,update_date,customer_id,customer_email,action) VALUES (NULL,NOW(),NEW.id_customer,NEW.email,\'U\');
-			END IF;
-		END;
-		');
-		$result7 = Configuration::updateGlobalValue('SARBACANEDESKTOP_TOKEN', '');
-		$result8 = Configuration::updateGlobalValue('SARBACANEDESKTOP_LIST', '');
-		$result9 = Configuration::updateGlobalValue('SARBACANEDESKTOP_IS_USER', '');
-		if (!$result1 || !$result2 || !$result3 || !$result4 || !$result5 || !$result6 || !$result7 || !$result8 || !$result9)
+		$result6 = Configuration::updateGlobalValue('SARBACANEDESKTOP_TOKEN', '');
+		$result7 = Configuration::updateGlobalValue('SARBACANEDESKTOP_LIST', '');
+		$result8 = Configuration::updateGlobalValue('SARBACANEDESKTOP_IS_USER', '');
+		if (!$result1 || !$result2 || !$result3 || !$result4 || !$result5 || !$result6 || !$result7 || !$result8 )
 			return false;
 		if (!parent::install())
 			return false;
+		$result9 = $this->registerHook('actionObjectCustomerUpdateAfter');
+		if(!$result9){
+			return false;
+		}
 		return true;
 	}
 
@@ -101,6 +93,18 @@ class Sarbacanedesktop extends Module
 		Db::getInstance()->execute('DROP TABLE IF EXISTS `'._DB_PREFIX_.'sd_updates`');
 		Db::getInstance()->execute('DROP TRIGGER IF EXISTS `sd_userupdate`');
 		return true;
+	}
+	
+	public function hookActionObjectCustomerUpdateAfter($params){
+		if($params != null && $params['object'] != null){
+			$customer = $params['object'];
+			Db::getInstance()->execute('DELETE FROM '._DB_PREFIX_.'sd_updates WHERE customer_id = '.$customer->id.' && customer_email = "'.$customer->email.'";');
+			if($customer->newsletter == 1){
+				Db::getInstance()->execute('INSERT INTO '._DB_PREFIX_.'sd_updates (id,update_date,customer_id,customer_email,action) VALUES (NULL,NOW(),'.$customer->id.',"'.$customer->email.'",\'S\');');
+			}else{
+				Db::getInstance()->execute('INSERT INTO '._DB_PREFIX_.'sd_updates (id,update_date,customer_id,customer_email,action) VALUES (NULL,NOW(),'.$customer->id.',"'.$customer->email.'",\'U\');');
+			}
+		}
 	}
 
 	public function initSynchronisation()
