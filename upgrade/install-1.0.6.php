@@ -37,20 +37,9 @@ function upgrade_module_1_0_6($object)
 		`action` VARCHAR(10) NOT NULL COLLATE \'utf8_bin\',
 		PRIMARY KEY (`id`)) COLLATE=\'utf8_bin\' ENGINE='._MYSQL_ENGINE_);
 	$update3 = Db::getInstance()->execute('
-		CREATE TRIGGER sd_userupdate AFTER UPDATE ON '._DB_PREFIX_.'customer
-		FOR EACH ROW BEGIN
-			DELETE FROM '._DB_PREFIX_.'sd_updates WHERE customer_id = NEW.id_customer && customer_email = NEW.email;
-			IF NEW.newsletter = 1 THEN
-				INSERT INTO '._DB_PREFIX_.'sd_updates (id,update_date,customer_id,customer_email,action) VALUES (NULL,NOW(),NEW.id_customer,NEW.email,\'S\');
-			ELSE
-				INSERT INTO '._DB_PREFIX_.'sd_updates (id,update_date,customer_id,customer_email,action) VALUES (NULL,NOW(),NEW.id_customer,NEW.email,\'U\');
-			END IF;
-		END;
-		');
-	$update4 = Db::getInstance()->execute('
 		ALTER TABLE `'._DB_PREFIX_.'sarbacanedesktop_users`
 		ADD COLUMN `list_id` varchar(50) NULL AFTER `sd_id`,
 		ADD COLUMN `last_call_date` DATETIME NULL AFTER `list_id`;	
 	');
-	return $update1 && $update2 && $update3 && $update4;
+	return $update1 && $update2 && $update3;
 }
