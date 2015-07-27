@@ -25,9 +25,10 @@
 if (! defined ( '_PS_VERSION_' ))
 	exit ();
 function upgrade_module_1_0_7($object) {
-	$result = $this->registerHook ( 'actionObjectCustomerUpdateAfter' );
+	$result = $object->registerHook ( 'actionObjectCustomerUpdateAfter' );
 	if (! $result) {
 		return false;
 	}
 	$update1 = Db::getInstance()->execute('DROP TRIGGER IF EXISTS `sd_userupdate`');
+	return true;
 }
