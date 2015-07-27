@@ -52,7 +52,7 @@ class Sarbacanedesktop extends Module
 		$result2 = Db::getInstance()->execute('DROP TABLE IF EXISTS `'._DB_PREFIX_.'sd_updates`');
 		$result3 = Db::getInstance()->execute('DROP TRIGGER IF EXISTS `sd_userupdate`');
 		$result4 = Db::getInstance()->execute('
-		CREATE TABLE `'._DB_PREFIX_.'sarbacanedesktop_users` (
+		CREATE TABLE IF NOT EXISTS `'._DB_PREFIX_.'sarbacanedesktop_users` (
 			`id_sd_id` int(20) unsigned NOT NULL AUTO_INCREMENT,
 			`sd_id` varchar(200) NOT NULL,
 			`list_id` varchar(50) NULL,
@@ -60,7 +60,7 @@ class Sarbacanedesktop extends Module
 			PRIMARY KEY (`id_sd_id`)
 		) ENGINE='._MYSQL_ENGINE_.' DEFAULT CHARSET=utf8');
 		$result5 = Db::getInstance()->execute('
-		CREATE TABLE `'._DB_PREFIX_.'sd_updates` (
+		CREATE TABLE IF NOT EXISTS `'._DB_PREFIX_.'sd_updates` (
 		`id` INT(10) UNSIGNED NOT NULL AUTO_INCREMENT,
 		`update_date` DATETIME NOT NULL,
 		`customer_id` INT(11) NULL DEFAULT NULL,
