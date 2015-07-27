@@ -29,6 +29,9 @@ function upgrade_module_1_0_7($object) {
 	if (! $result) {
 		return false;
 	}
-	$update1 = Db::getInstance()->execute('DROP TRIGGER IF EXISTS `sd_userupdate`');
+	try{
+		$update1 = Db::getInstance()->execute('DROP TRIGGER IF EXISTS `sd_userupdate`');
+	}catch(Exception $e){
+	}
 	return true;
 }
