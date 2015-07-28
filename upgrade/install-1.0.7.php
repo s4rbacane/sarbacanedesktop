@@ -22,30 +22,16 @@
  *  @copyright 2015 Sarbacane Software
  *  @license   http://opensource.org/licenses/afl-3.0.php  Academic Free License (AFL 3.0)
  */
-
-if (!defined('_PS_VERSION_'))
-	exit;
-function upgrade_module_1_0_6($object)
-{
-	//sql update
-	$update1 = Db::getInstance()->execute('DROP TABLE IF EXISTS `'._DB_PREFIX_.'sarbacanedesktop`');
-	$update2 = Db::getInstance()->execute('CREATE TABLE IF NOT EXISTS `'._DB_PREFIX_.'sd_updates` (
-		`id` INT(10) UNSIGNED NOT NULL AUTO_INCREMENT,
-		`update_date` DATETIME NOT NULL,
-		`customer_id` INT(11) NULL DEFAULT NULL,
-		`customer_email` VARCHAR(255) NULL DEFAULT NULL COLLATE \'utf8_bin\',
-		`action` VARCHAR(10) NOT NULL COLLATE \'utf8_bin\',
-		PRIMARY KEY (`id`)) COLLATE=\'utf8_bin\' ENGINE='._MYSQL_ENGINE_);
-	try{
-		$update3 = Db::getInstance()->execute('
-			ALTER TABLE `'._DB_PREFIX_.'sarbacanedesktop_users`
-			ADD COLUMN `list_id` varchar(50) NULL AFTER `sd_id`,
-			ADD COLUMN `last_call_date` DATETIME NULL AFTER `list_id`;	
-		');
-	}catch(Exception $e){
-		//Unable to alter the table. 
-		//Might already be updated
+if (! defined ( '_PS_VERSION_' ))
+	exit ();
+function upgrade_module_1_0_7($object) {
+	$result = $object->registerHook ( 'actionObjectCustomerUpdateAfter' );
+	if (! $result) {
+		return false;
 	}
-
-	return $update1 && $update2;
+	try{
+		$update1 = Db::getInstance()->execute('DROP TRIGGER IF EXISTS `sd_userupdate`');
+	}catch(Exception $e){
+	}
+	return true;
 }
