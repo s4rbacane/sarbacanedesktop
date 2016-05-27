@@ -308,15 +308,15 @@ class Sarbacanedesktop extends Module
 	private function checkIfNewsletterModule($id_shop)
 	{
 		$rq_sql = '
-		SELECT count(*)
+		SELECT COUNT(*)
 		FROM `'._DB_PREFIX_.'module` m,
 		`'._DB_PREFIX_.'module_shop` ms
-		WHERE m.`name` = \'blocknewsletter\'
+		WHERE ( m.`name` = \'blocknewsletter\' OR m.`name` = \'ps_emailsubscription\' )
 		AND m.`active` = 1
 		AND m.`id_module` = ms.`id_module`
 		AND ms.`id_shop` = '.(int)$id_shop;
-		$block_newsletter = Db::getInstance()->getValue($rq_sql);
-		if ($block_newsletter == 1)
+		$newsletter_module = Db::getInstance()->getValue($rq_sql);
+		if ($newsletter_module > 0)
 		{
 			$rq = Db::getInstance()->executeS($rq_sql);
 			$rq_sql = 'SHOW TABLES LIKE \''._DB_PREFIX_.'newsletter\'';
